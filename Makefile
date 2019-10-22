@@ -6,7 +6,10 @@ elm:
 	rm public/app.js
 
 sass:
-	sass --scss src/index.scss public/app.css
+	sass --scss --sourcemap=none src/index.scss public/app.css
 
 html:
 	cp src/index.html public/index.html
+
+clean:
+	rm -rf public
