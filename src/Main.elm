@@ -4,8 +4,9 @@ import Browser
 import State
 import View
 
-main = Browser.sandbox
-  { init = State.initialState
+main = Browser.element
+  { init = State.init
+  , subscriptions = State.subscriptions
   , update = State.update
   , view = View.view
   }

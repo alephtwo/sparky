@@ -8,7 +8,10 @@
     <div id="app"></div>
     <script src="/app.min.js"></script>
     <script type="text/javascript">
-      Elm.Main.init({ node: document.getElementById('app') });
+      Elm.Main.init({
+        node: document.getElementById('app'),
+        flags: {}
+      });
     </script>
   </body>
 </html>
