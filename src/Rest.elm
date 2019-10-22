@@ -7,10 +7,10 @@ import Json.Decode exposing (Decoder, field, float)
 getExchangeRate: Cmd Msg
 getExchangeRate =
   Http.get
-    { url = "https://api.exchangeratesapi.io/latest?base=USD&symbols=JPY"
+    { url = "https://api.exchangeratesapi.io/latest?base=JPY&symbols=USD"
     , expect = Http.expectJson GotExchangeRate exchangeRateDecoder
     }
 
 exchangeRateDecoder: Decoder Float
 exchangeRateDecoder =
-  field "rates" (field "JPY" float)
+  field "rates" (field "USD" float)
