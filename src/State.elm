@@ -1,18 +1,21 @@
 module State exposing (init, update, subscriptions)
 
+import Rest
 import Types exposing (Flags, Model, Msg(..))
 
 init: Flags -> (Model, Cmd Msg)
 init flags =
-  (initialState, Cmd.none)
+  (initialState, Rest.getExchangeRate)
 
 update: Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
-    Increment ->
-      ({ model | value = model.value + 1 }, Cmd.none)
-    Decrement ->
-      ({ model | value = model.value - 1 }, Cmd.none)
+    GotExchangeRate result ->
+      case result of
+        Ok rate ->
+          ({ model | exchangeRate = rate }, Cmd.none)
+        Err _ ->
+          (model, Cmd.none)
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
@@ -20,5 +23,5 @@ subscriptions model =
 
 initialState: Model
 initialState =
-  { value = 0
+  { exchangeRate = 0
   }

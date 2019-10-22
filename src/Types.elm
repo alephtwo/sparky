@@ -1,9 +1,12 @@
 module Types exposing (Flags, Model, Msg(..))
 
-type Msg = Increment | Decrement
+import Http
+
+type Msg
+  = GotExchangeRate (Result Http.Error Float)
 
 type alias Model =
-  { value: Int
+  { exchangeRate: Float
   }
 
 type alias Flags =
