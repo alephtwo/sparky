@@ -16,6 +16,14 @@ update msg model =
           ({ model | exchangeRate = rate }, Cmd.none)
         Err _ ->
           (model, Cmd.none)
+    SetCrystals x ->
+      ({ model | crystals = parseInt x } , Cmd.none)
+    SetTickets x ->
+      ({ model | tickets = parseInt x } , Cmd.none)
+    SetTenPartTickets x ->
+      ({ model | tenPartTickets = parseInt x } , Cmd.none)
+    SetSparks x ->
+      ({ model | sparks = parseInt x } , Cmd.none)
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
@@ -24,4 +32,17 @@ subscriptions model =
 initialState: Model
 initialState =
   { exchangeRate = 0
+  , crystals = 0
+  , tickets = 0
+  , tenPartTickets = 0
+  , sparks = 0
   }
+
+parseInt: String -> Int
+parseInt str =
+  str
+  |> Debug.log "input"
+  |> String.filter Char.isDigit
+  |> Debug.log "digits"
+  |> String.toInt
+  |> Maybe.withDefault 0
