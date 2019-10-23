@@ -1,3 +1,10 @@
-body {
-  background-color: #336699;
+* {
+  font-family: sans-serif;
+}
+
+label {
+  display: inline-block;
+  width: 250px;
+  text-align: right;
+  padding-right: 16px;
 }

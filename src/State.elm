@@ -41,8 +41,7 @@ initialState =
 parseInt: String -> Int
 parseInt str =
   str
-  |> Debug.log "input"
   |> String.filter Char.isDigit
-  |> Debug.log "digits"
+  |> String.slice 0 6
   |> String.toInt
   |> Maybe.withDefault 0
