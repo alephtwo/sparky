@@ -6,7 +6,7 @@ elm:
 	rm public/app.js
 
 sass:
-	sass --scss --no-cache --sourcemap=none src/index.scss public/app.css
+	sass --no-source-map src/index.scss public/app.css
 
 html:
 	cp src/index.html public/index.html
