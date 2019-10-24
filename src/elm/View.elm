@@ -2,7 +2,7 @@ module View exposing (view)
 
 import Html exposing (Html, div, input, text, label, span)
 import Html.Events exposing (onInput)
-import Html.Attributes exposing (for, value, id)
+import Html.Attributes exposing (for, value, id, disabled)
 import Round
 import Types exposing (Model, Msg(..))
 
@@ -47,17 +47,14 @@ view model =
         , calculatedField "Total" (String.fromInt total)
         , calculatedField "Spark Count" (String.fromInt sparkCount)
         , calculatedField "Next Spark In" (String.fromInt neededForNextSpark)
-        , calculatedField "Cost To Spark (USD)" (Round.ceiling 2 costToSpark)
+        , calculatedField "Cost To Spark" (Round.ceiling 2 costToSpark)
         ]
       ]
 
 intInput: String -> Int -> (String -> Msg) -> Html Msg
 intInput name number event =
   let
-    cssId =
-      name
-      |> String.toLower
-      |> String.map(\c -> if c == ' ' then '-' else c)
+    cssId = makeCssId name
   in
     div []
       [ label [ for cssId ] [ text name ]
@@ -65,8 +62,17 @@ intInput name number event =
       ]
 
 calculatedField: String -> String -> Html Msg
-calculatedField name value =
-  div []
-    [ label [] [ text name ]
-    , span [] [ text value ]
-    ]
+calculatedField name val =
+  let
+    cssId = makeCssId name
+  in
+    div []
+      [ label [ for cssId ] [ text name ]
+      , input [ id cssId, value val, disabled True ] []
+      ]
+
+makeCssId: String -> String
+makeCssId name =
+  name
+  |> String.toLower
+  |> String.map(\c -> if c == ' ' then '-' else c)
