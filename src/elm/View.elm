@@ -33,18 +33,22 @@ view model =
       pricePerTenDraw * (toFloat tenDrawsNeeded)
   in
     div []
-      [ div []
-        [ intInput "Crystals" model.crystals SetCrystals
-        , intInput "Tickets" model.tickets SetTickets
-        , intInput "Ten Part Tickets" model.tenPartTickets SetTenPartTickets
-        , intInput "Sparks" model.sparks SetSparks
+      [ div [ class "data-entry" ]
+        [ div [ class "user-inputs" ]
+          [ intInput "Crystals" model.crystals SetCrystals
+          , intInput "Tickets" model.tickets SetTickets
+          , intInput "Ten Part Tickets" model.tenPartTickets SetTenPartTickets
+          , intInput "Sparks" model.sparks SetSparks
+          ]
+        , div [ class "calculated-values" ]
+          [ calculatedField "From Crystals" (String.fromInt calculated.fromCrystals)
+          , calculatedField "From Tickets" (String.fromInt calculated.fromTickets)
+          , calculatedField "From Ten Part Tickets" (String.fromInt calculated.fromTenPartTickets)
+          , calculatedField "From Sparks" (String.fromInt calculated.fromSparks)
+          ]
         ]
       , div []
-        [ calculatedField "From Crystals" (String.fromInt calculated.fromCrystals)
-        , calculatedField "From Tickets" (String.fromInt calculated.fromTickets)
-        , calculatedField "From Ten Part Tickets" (String.fromInt calculated.fromTenPartTickets)
-        , calculatedField "From Sparks" (String.fromInt calculated.fromSparks)
-        , calculatedField "Total" (String.fromInt total)
+        [ calculatedField "Total" (String.fromInt total)
         , calculatedField "Spark Count" (String.fromInt sparkCount)
         , calculatedField "Next Spark In" (String.fromInt neededForNextSpark)
         , calculatedField "Cost To Spark" (Round.ceiling 2 costToSpark)
