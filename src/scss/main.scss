@@ -4,9 +4,18 @@
   font-family: Arial, sans-serif;
 }
 
+body {
+  background-color: $background-color;
+}
+
 .container {
-  margin: $spacing auto;
   width: 50vw;
+  padding: $spacing / 2;
+  margin: $spacing auto;
+  background-color: white;
+  border: 1px solid $border-color;
+  border-radius: $spacing / 4;
+  box-shadow: 3px 3px 1px 1px rgba($border-color, 25%);
 }
 
 .data-entry {
