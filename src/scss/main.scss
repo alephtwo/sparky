@@ -1,0 +1,26 @@
+@import "./vars";
+
+* {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin: auto;
+  width: 75vw;
+}
+
+.input-group {
+  margin: $spacing;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-weight: bold;
+    font-size: $font-size-small;
+    order: 1;
+  }
+
+  input {
+    order: 2;
+  }
+}

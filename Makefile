@@ -6,7 +6,7 @@ elm:
 	rm public/app.js
 
 sass:
-	sass --no-source-map src/scss/index.scss public/app.css
+	sass --no-source-map src/scss/main.scss public/app.css
 
 static:
 	cp -r src/static/* public/

@@ -2,7 +2,7 @@ module View exposing (view)
 
 import Html exposing (Html, div, input, text, label, span)
 import Html.Events exposing (onInput)
-import Html.Attributes exposing (for, value, id, disabled)
+import Html.Attributes exposing (class, for, value, id, disabled)
 import Round
 import Types exposing (Model, Msg(..))
 
@@ -56,7 +56,7 @@ intInput name number event =
   let
     cssId = makeCssId name
   in
-    div []
+    div [ class "input-group" ]
       [ label [ for cssId ] [ text name ]
       , input [ id cssId, value (String.fromInt number), onInput event ] []
       ]
@@ -66,7 +66,7 @@ calculatedField name val =
   let
     cssId = makeCssId name
   in
-    div []
+    div [ class "input-group" ]
       [ label [ for cssId ] [ text name ]
       , input [ id cssId, value val, disabled True ] []
       ]
