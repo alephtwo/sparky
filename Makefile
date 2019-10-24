@@ -1,15 +1,15 @@
-all: elm sass html
+all: elm sass static
 
 elm:
-	elm make src/Main.elm --output=public/app.js
+	elm make src/elm/Main.elm --output=public/app.js
 	uglifyjs --compress --mangle -o public/app.min.js -- public/app.js
 	rm public/app.js
 
 sass:
-	sass --no-source-map src/index.scss public/app.css
+	sass --no-source-map src/scss/index.scss public/app.css
 
-html:
-	cp src/index.html public/index.html
+static:
+	cp -r src/static/* public/
 
 clean:
 	rm -rf public
