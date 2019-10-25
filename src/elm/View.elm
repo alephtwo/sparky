@@ -1,5 +1,6 @@
 module View exposing (view)
 
+import Costs
 import Html exposing (Html, div, input, text, label, span)
 import Html.Events exposing (onInput)
 import Html.Attributes exposing (class, for, value, id, disabled)
@@ -10,7 +11,7 @@ view: Model -> Html Msg
 view model =
   let
     calculated =
-      { fromCrystals = model.crystals // 300
+      { fromCrystals = model.crystals // Costs.crystalsPerRoll
       , fromTickets = model.tickets
       , fromTenPartTickets = model.tenPartTickets * 10
       , fromSparks = model.sparks
@@ -21,14 +22,13 @@ view model =
       + calculated.fromTenPartTickets
       + calculated.fromSparks
     sparkCount =
-      total // 300
+      total // Costs.crystalsPerRoll
     neededForNextSpark =
-      300 - (modBy 300 total)
+      Costs.crystalsPerRoll - (modBy Costs.crystalsPerRoll total)
     tenDrawsNeeded =
       ceiling (toFloat neededForNextSpark / 10)
     pricePerTenDraw =
-      -- 3000 JPY...
-      3000 * model.exchangeRate
+      Costs.yenPerTenRoll * model.exchangeRate
     costToSpark =
       pricePerTenDraw * (toFloat tenDrawsNeeded)
   in
