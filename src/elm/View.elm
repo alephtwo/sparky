@@ -1,9 +1,9 @@
 module View exposing (view)
 
 import Costs
-import Html exposing (Html, div, input, text, label)
+import Html exposing (Html, div, input, img, text, label)
 import Html.Events exposing (onInput)
-import Html.Attributes exposing (class, for, value, id, disabled)
+import Html.Attributes exposing (class, for, value, id, src, disabled)
 import Round
 import Types exposing (Model, Msg(..))
 
@@ -32,51 +32,17 @@ view model =
     costToSpark =
       pricePerTenDraw * toFloat tenDrawsNeeded
   in
-    div []
-      [ div [ class "data-entry" ]
-        [ div [ class "user-inputs" ]
-          [ intInput "Crystals" model.crystals SetCrystals
-          , intInput "Ten Part Tickets" model.tenPartTickets SetTenPartTickets
-          , intInput "Tickets" model.tickets SetTickets
-          , intInput "Sparks" model.sparks SetSparks
-          ]
-        , div [ class "calculated-values" ]
-          [ calculatedField "From Crystals" (String.fromInt calculated.fromCrystals)
-          , calculatedField "From Ten Part Tickets" (String.fromInt calculated.fromTenPartTickets)
-          , calculatedField "From Tickets" (String.fromInt calculated.fromTickets)
-          , calculatedField "From Sparks" (String.fromInt calculated.fromSparks)
-          ]
-        ]
-      , div []
-        [ calculatedField "Total" (String.fromInt total)
-        , calculatedField "Spark Count" (String.fromInt sparkCount)
-        , calculatedField "Next Spark In" (String.fromInt neededForNextSpark)
-        , calculatedField "Cost To Spark" (Round.ceiling 2 costToSpark)
-        ]
+    div [ class "card" ]
+      [ calculatorGroup "crystal.jpg" model.crystals       Types.SetCrystals       calculated.fromCrystals
+      , calculatorGroup "10part.jpg"  model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
+      , calculatorGroup "ticket.png"  model.tickets        Types.SetTickets        calculated.fromTickets
+      , calculatorGroup "sparks.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
       ]
 
-intInput: String -> Int -> (String -> Msg) -> Html Msg
-intInput name number event =
-  let
-    cssId = makeCssId name
-  in
-    div [ class "input-group" ]
-      [ label [ for cssId ] [ text name ]
-      , input [ id cssId, value (String.fromInt number), onInput event ] []
-      ]
-
-calculatedField: String -> String -> Html Msg
-calculatedField name val =
-  let
-    cssId = makeCssId name
-  in
-    div [ class "input-group" ]
-      [ label [ for cssId ] [ text name ]
-      , input [ id cssId, value val, disabled True ] []
-      ]
-
-makeCssId: String -> String
-makeCssId name =
-  name
-  |> String.toLower
-  |> String.map(\c -> if c == ' ' then '-' else c)
+calculatorGroup: String -> Int -> (String -> Msg) -> Int -> Html Msg
+calculatorGroup image amount event calculated =
+  div [ class "input-row calculator-group" ]
+    [ img [ src image, class "icon" ] []
+    , input [ value (String.fromInt amount), onInput event ] []
+    , input [ disabled True, value (String.fromInt calculated), onInput event ] []
+    ]
