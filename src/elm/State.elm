@@ -26,7 +26,7 @@ update msg model =
       ({ model | sparks = parseInt x } , Cmd.none)
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none
 
 initialState: Model
