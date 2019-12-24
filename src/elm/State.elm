@@ -4,7 +4,7 @@ import Rest
 import Types exposing (Flags, Model, Msg(..))
 
 init: Flags -> (Model, Cmd Msg)
-init flags =
+init _ =
   (initialState, Rest.getExchangeRate)
 
 update: Msg -> Model -> (Model, Cmd Msg)

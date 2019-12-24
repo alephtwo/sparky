@@ -1,7 +1,7 @@
 module View exposing (view)
 
 import Costs
-import Html exposing (Html, div, input, text, label, span)
+import Html exposing (Html, div, input, text, label)
 import Html.Events exposing (onInput)
 import Html.Attributes exposing (class, for, value, id, disabled)
 import Round
@@ -24,13 +24,13 @@ view model =
     sparkCount =
       total // Costs.crystalsPerRoll
     neededForNextSpark =
-      Costs.crystalsPerRoll - (modBy Costs.crystalsPerRoll total)
+      Costs.crystalsPerRoll - modBy Costs.crystalsPerRoll total
     tenDrawsNeeded =
       ceiling (toFloat neededForNextSpark / 10)
     pricePerTenDraw =
-      Costs.yenPerTenRoll * model.exchangeRate
+      toFloat Costs.yenPerTenRoll * model.exchangeRate
     costToSpark =
-      pricePerTenDraw * (toFloat tenDrawsNeeded)
+      pricePerTenDraw * toFloat tenDrawsNeeded
   in
     div []
       [ div [ class "data-entry" ]
