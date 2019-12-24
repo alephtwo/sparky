@@ -2,7 +2,7 @@ all: elm sass static
 
 elm:
 	elm make src/elm/Main.elm --output=public/app.js
-	uglifyjs --compress --mangle -o public/app.min.js -- public/app.js
+	terser -c -o public/app.min.js public/app.js
 	rm public/app.js
 
 sass:
