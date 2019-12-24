@@ -27,8 +27,12 @@ body {
 .calculated-values, .user-inputs {
   display: flex;
   flex-direction: row;
+  flex-basis: 1;
+
   .input-group {
     flex-grow: 1;
+    flex-shrink: 1;
+    width: 25%;
   }
 }
 
