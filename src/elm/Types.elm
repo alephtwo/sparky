@@ -1,4 +1,4 @@
-module Types exposing (Flags, Model, Msg(..))
+module Types exposing (Flags, Model, Calculated, Msg(..))
 
 import Http
 
@@ -15,6 +15,14 @@ type alias Model =
   , tickets: Int
   , tenPartTickets: Int
   , sparks: Int
+  }
+
+type alias Calculated =
+  {
+  fromCrystals : Int
+  , fromSparks : Int
+  , fromTenPartTickets : Int
+  , fromTickets : Int
   }
 
 type alias Flags =

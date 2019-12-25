@@ -32,17 +32,21 @@ view model =
     costToSpark =
       pricePerTenDraw * toFloat tenDrawsNeeded
   in
-    div [ class "card" ]
-      [ calculatorGroup "crystal.jpg" model.crystals       Types.SetCrystals       calculated.fromCrystals
-      , calculatorGroup "10part.jpg"  model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
-      , calculatorGroup "ticket.png"  model.tickets        Types.SetTickets        calculated.fromTickets
-      , calculatorGroup "sparks.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
-      ]
+    div [ class "card calculator" ] (calculators model calculated)
 
-calculatorGroup: String -> Int -> (String -> Msg) -> Int -> Html Msg
-calculatorGroup image amount event calculated =
-  div [ class "input-row calculator-group" ]
-    [ img [ src image, class "icon" ] []
-    , input [ value (String.fromInt amount), onInput event ] []
-    , input [ disabled True, value (String.fromInt calculated), onInput event ] []
+calculators: Model -> Types.Calculated -> List(Html Msg)
+calculators model calculated =
+  List.concat
+    [ calculator "crystal.jpg" model.crystals       Types.SetCrystals       calculated.fromCrystals
+    , calculator "10part.jpg"  model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
+    , calculator "ticket.png"  model.tickets        Types.SetTickets        calculated.fromTickets
+    , calculator "sparks.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
     ]
+
+
+calculator: String -> Int -> (String -> Msg) -> Int -> List(Html Msg)
+calculator image amount event calculated =
+  [ img [ src image ] []
+  , input [ value (String.fromInt amount), onInput event ] []
+  , input [ value (String.fromInt calculated), disabled True ] []
+  ]
