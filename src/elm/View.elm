@@ -1,9 +1,9 @@
 module View exposing (view)
 
 import Costs
-import Html exposing (Html, div, input, img, text, label, span)
+import Html exposing (Html, a, div, input, img, text, span)
 import Html.Events exposing (onInput)
-import Html.Attributes exposing (class, for, value, id, src, disabled, alt, title)
+import Html.Attributes exposing (class, value, src, disabled, alt, title, href)
 import Round
 import Types exposing (Model, Msg(..))
 
@@ -49,6 +49,8 @@ view model =
           ]
         , div [ class "footer" ]
           [ span [] [ text(Round.ceiling 4 (1 / model.exchangeRate) ++ " USD:JPY") ]
+          , text " | "
+          , a [ href "https://www.ncpgambling.org/help-treatment/national-helpline-1-800-522-4700/" ] [ text "National Problem Gambling Helpline" ]
           ]
         ]
       ]
