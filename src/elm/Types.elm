@@ -18,8 +18,7 @@ type alias Model =
   }
 
 type alias Calculated =
-  {
-  fromCrystals : Int
+  { fromCrystals : Int
   , fromSparks : Int
   , fromTenPartTickets : Int
   , fromTickets : Int
