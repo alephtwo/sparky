@@ -14,8 +14,16 @@ input {
 }
 
 div.container {
-  width: 500px;
+  width: 750px;
   margin: $spacing auto;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 500px;
+  }
 }
 
 div.card {
