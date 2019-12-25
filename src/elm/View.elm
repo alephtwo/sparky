@@ -3,7 +3,7 @@ module View exposing (view)
 import Costs
 import Html exposing (Html, div, input, img, text, label)
 import Html.Events exposing (onInput)
-import Html.Attributes exposing (class, for, value, id, src, disabled, alt)
+import Html.Attributes exposing (class, for, value, id, src, disabled, alt, title)
 import Round
 import Types exposing (Model, Msg(..))
 
@@ -34,26 +34,26 @@ view model =
   in
     div [ class "card" ]
       [ div [ class "calculator" ] <| List.concat
-        [ calculatorField "Crystals"              "crystal.jpg" model.crystals       Types.SetCrystals       calculated.fromCrystals
-        , calculatorField "Ten Part Draw Tickets" "10part.jpg"  model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
-        , calculatorField "Tickets"               "ticket.png"  model.tickets        Types.SetTickets        calculated.fromTickets
-        , calculatorField "Cerulean Sparks"       "sparks.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
+        [ calculatorField "Crystals"              "crystal.jpg"         model.crystals       Types.SetCrystals       calculated.fromCrystals
+        , calculatorField "Ten Part Draw Tickets" "10part.jpg"          model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
+        , calculatorField "Tickets"               "ticket.png"          model.tickets        Types.SetTickets        calculated.fromTickets
+        , calculatorField "Cerulean Sparks"       "cerulean-spark.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
         ]
       , div [ class "output" ] <| List.concat
-        [ outputField "Total"         "weapon-exp-cup.jpg" (String.fromInt total)
-        , outputField "Cost To Spark" "weapon-exp-cup.jpg" (Round.ceiling 2 costToSpark)
+        [ outputField "Total"         "sparks.jpg" (String.fromInt total)
+        , outputField "Cost To Spark" "coin.png"   ("$ " ++ Round.ceiling 2 costToSpark)
         ]
       ]
 
 calculatorField: String -> String -> Int -> (String -> Msg) -> Int -> List(Html Msg)
 calculatorField alt_ image amount event calculated =
-  [ img [ src image, alt alt_ ] []
+  [ img [ src image, alt alt_, title alt_ ] []
   , input [ value (String.fromInt amount), onInput event ] []
   , input [ value (String.fromInt calculated), disabled True ] []
   ]
 
 outputField: String -> String -> String -> List(Html Msg)
 outputField alt_ image t =
-  [ img [ src image, alt alt_ ] []
+  [ img [ src image, alt alt_, title alt_ ] []
   , input [ value t, disabled True ] []
   ]
