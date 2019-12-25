@@ -35,7 +35,7 @@ div.calculator {
 
 div.output {
   display: grid;
-  grid-template-rows: repeat(6, $input-height);
+  grid-template-rows: repeat(2, $input-height);
   grid-template-columns: $input-height 1fr;
   grid-gap: $grid-gap;
 }
