@@ -32,8 +32,14 @@ view model =
     costToSpark =
       pricePerTenDraw * toFloat tenDrawsNeeded
   in
-    div [ class "card calculator" ] (calculators model calculated)
-
+    div [ class "card" ]
+      [ div [ class "calculator" ] (calculators model calculated)
+      , div [] [ text (String.fromFloat model.exchangeRate) ]
+      , div [] [ text (String.fromInt sparkCount) ]
+      , div [] [ text (String.fromInt neededForNextSpark) ]
+      , div [] [ text (String.fromInt tenDrawsNeeded) ]
+      , div [] [ text (Round.ceiling 2 costToSpark) ]
+      ]
 calculators: Model -> Types.Calculated -> List(Html Msg)
 calculators model calculated =
   List.concat
