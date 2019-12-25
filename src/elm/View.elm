@@ -33,25 +33,30 @@ view model =
       pricePerTenDraw * toFloat tenDrawsNeeded
   in
     div [ class "card" ]
-      [ div [ class "calculator" ] (calculators model calculated)
-      , div [] [ text (String.fromFloat model.exchangeRate) ]
-      , div [] [ text (String.fromInt sparkCount) ]
-      , div [] [ text (String.fromInt neededForNextSpark) ]
-      , div [] [ text (String.fromInt tenDrawsNeeded) ]
-      , div [] [ text (Round.ceiling 2 costToSpark) ]
+      [ div [ class "calculator" ] <| List.concat
+        [ calculatorField "crystal.jpg" model.crystals       Types.SetCrystals       calculated.fromCrystals
+        , calculatorField "10part.jpg"  model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
+        , calculatorField "ticket.png"  model.tickets        Types.SetTickets        calculated.fromTickets
+        , calculatorField "sparks.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
+        ]
+      , div [ class "output" ] <| List.concat
+        [ outputField (String.fromInt total)
+        , outputField (String.fromInt sparkCount)
+        , outputField (String.fromInt neededForNextSpark)
+        , outputField (String.fromInt tenDrawsNeeded)
+        , outputField (Round.ceiling 2 pricePerTenDraw)
+        , outputField (Round.ceiling 2 costToSpark)
+        ]
       ]
-calculators: Model -> Types.Calculated -> List(Html Msg)
-calculators model calculated =
-  List.concat
-    [ calculator "crystal.jpg" model.crystals       Types.SetCrystals       calculated.fromCrystals
-    , calculator "10part.jpg"  model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
-    , calculator "ticket.png"  model.tickets        Types.SetTickets        calculated.fromTickets
-    , calculator "sparks.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
-    ]
 
+outputField: String -> List(Html Msg)
+outputField t =
+  [ div [] []
+  , input [ value t, disabled True ] []
+  ]
 
-calculator: String -> Int -> (String -> Msg) -> Int -> List(Html Msg)
-calculator image amount event calculated =
+calculatorField: String -> Int -> (String -> Msg) -> Int -> List(Html Msg)
+calculatorField image amount event calculated =
   [ img [ src image ] []
   , input [ value (String.fromInt amount), onInput event ] []
   , input [ value (String.fromInt calculated), disabled True ] []
