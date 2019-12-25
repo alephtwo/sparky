@@ -31,11 +31,6 @@ div.calculator {
   grid-template-columns: $input-height 1fr 1fr;
   grid-gap: $grid-gap;
   margin-bottom: $grid-gap;
-
-  & > img {
-    width: 100%;
-    height: 100%;
-  }
 }
 
 div.output {
@@ -43,4 +38,11 @@ div.output {
   grid-template-rows: repeat(6, $input-height);
   grid-template-columns: $input-height 1fr;
   grid-gap: $grid-gap;
+}
+
+div.calculator, div.output {
+  & > img {
+    width: 100%;
+    height: 100%;
+  }
 }

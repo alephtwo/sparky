@@ -40,18 +40,18 @@ view model =
         , calculatorField "sparks.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
         ]
       , div [ class "output" ] <| List.concat
-        [ outputField (String.fromInt total)
-        , outputField (String.fromInt sparkCount)
-        , outputField (String.fromInt neededForNextSpark)
-        , outputField (String.fromInt tenDrawsNeeded)
-        , outputField (Round.ceiling 2 pricePerTenDraw)
-        , outputField (Round.ceiling 2 costToSpark)
+        [ outputField "weapon-exp-cup.jpg" (String.fromInt total)
+        , outputField "weapon-exp-cup.jpg" (String.fromInt sparkCount)
+        , outputField "weapon-exp-cup.jpg" (String.fromInt neededForNextSpark)
+        , outputField "weapon-exp-cup.jpg" (String.fromInt tenDrawsNeeded)
+        , outputField "weapon-exp-cup.jpg" (Round.ceiling 2 pricePerTenDraw)
+        , outputField "weapon-exp-cup.jpg" (Round.ceiling 2 costToSpark)
         ]
       ]
 
-outputField: String -> List(Html Msg)
-outputField t =
-  [ div [] []
+outputField: String -> String -> List(Html Msg)
+outputField image t =
+  [ img [ src image ] []
   , input [ value t, disabled True ] []
   ]
 
