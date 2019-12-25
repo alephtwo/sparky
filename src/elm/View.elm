@@ -1,7 +1,7 @@
 module View exposing (view)
 
 import Costs
-import Html exposing (Html, div, input, img, text, label)
+import Html exposing (Html, div, input, img, text, label, span)
 import Html.Events exposing (onInput)
 import Html.Attributes exposing (class, for, value, id, src, disabled, alt, title)
 import Round
@@ -40,10 +40,19 @@ view model =
         , calculatorField "Cerulean Sparks"       "cerulean-spark.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
         ]
       , div [ class "output" ] <| List.concat
-        [ outputField "Total"         "sparks.jpg" (String.fromInt total)
-        , outputField "Cost To Spark" "coin.png"   ("$ " ++ Round.ceiling 2 costToSpark)
+        [ outputField "Total"         "sparks.jpg" (String.fromInt total ++ describeSparkCount sparkCount)
+        , outputField "Cost To Spark" "coin.png"   (Round.ceiling 2 costToSpark ++ " USD to next spark")
         ]
       ]
+
+describeSparkCount: Int -> String
+describeSparkCount count =
+  let
+    descriptor = case count of
+      1 -> "spark"
+      _ -> "sparks"
+  in
+    " (" ++ String.fromInt count ++ " " ++ descriptor ++ ")"
 
 calculatorField: String -> String -> Int -> (String -> Msg) -> Int -> List(Html Msg)
 calculatorField alt_ image amount event calculated =
@@ -55,5 +64,5 @@ calculatorField alt_ image amount event calculated =
 outputField: String -> String -> String -> List(Html Msg)
 outputField alt_ image t =
   [ img [ src image, alt alt_, title alt_ ] []
-  , input [ value t, disabled True ] []
+  , span [ class "read-only-input" ] [ text t ]
   ]

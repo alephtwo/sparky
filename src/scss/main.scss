@@ -9,8 +9,13 @@ body {
 }
 
 input {
+  height: 100%;
   border: 1px solid $border-color;
+}
+
+input, span.read-only-input {
   padding-left: 5px;
+  font-size: 20px;
 }
 
 div.container {
@@ -35,6 +40,7 @@ div.card {
 
 div.calculator {
   display: grid;
+  align-items: center;
   grid-template-rows: repeat(4, $input-height);
   grid-template-columns: $input-height 1fr 1fr;
   grid-gap: $grid-gap;
@@ -43,6 +49,7 @@ div.calculator {
 
 div.output {
   display: grid;
+  align-items: center;
   grid-template-rows: repeat(2, $input-height);
   grid-template-columns: $input-height 1fr;
   grid-gap: $grid-gap;
