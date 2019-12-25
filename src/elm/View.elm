@@ -32,16 +32,24 @@ view model =
     costToSpark =
       pricePerTenDraw * toFloat tenDrawsNeeded
   in
-    div [ class "card" ]
-      [ div [ class "calculator" ] <| List.concat
-        [ calculatorField "Crystals"              "crystal.jpg"         model.crystals       Types.SetCrystals       calculated.fromCrystals
-        , calculatorField "Ten Part Draw Tickets" "10part.jpg"          model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
-        , calculatorField "Tickets"               "ticket.png"          model.tickets        Types.SetTickets        calculated.fromTickets
-        , calculatorField "Cerulean Sparks"       "cerulean-spark.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
-        ]
-      , div [ class "output" ] <| List.concat
-        [ outputField "Total"         "sparks.jpg" (String.fromInt total ++ describeSparkCount sparkCount)
-        , outputField "Cost To Spark" "coin.png"   (Round.ceiling 2 costToSpark ++ " USD to next spark")
+    div []
+      [ div [ class "card" ]
+        [ div [ class "calculator" ] <| List.concat
+          [ calculatorField "Crystals"              "crystal.jpg"         model.crystals       Types.SetCrystals       calculated.fromCrystals
+          , calculatorField "Ten Part Draw Tickets" "10part.jpg"          model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
+          , calculatorField "Tickets"               "ticket.png"          model.tickets        Types.SetTickets        calculated.fromTickets
+          , calculatorField "Cerulean Sparks"       "cerulean-spark.jpg"  model.sparks         Types.SetSparks         calculated.fromSparks
+          , [ img [ src "sparks.jpg", alt "Total" ] []
+            , input [ value (String.fromInt total ++ " cerulean sparks"), disabled True ] []
+            , input [ value (describeSparkCount sparkCount), disabled True ] []
+            ]
+          , [ img [ src "coin.png", alt "Cost to Spark", title "Cost to Spark" ] []
+            , span [ class "read-only-input" ] [ text (Round.ceiling 2 costToSpark ++ " USD until next spark") ]
+            ]
+          ]
+        , div [ class "footer" ]
+          [ span [] [ text(Round.ceiling 4 (1 / model.exchangeRate) ++ " USD:JPY") ]
+          ]
         ]
       ]
 
@@ -52,17 +60,11 @@ describeSparkCount count =
       1 -> "spark"
       _ -> "sparks"
   in
-    " (" ++ String.fromInt count ++ " " ++ descriptor ++ ")"
+    String.fromInt count ++ " full " ++ descriptor
 
 calculatorField: String -> String -> Int -> (String -> Msg) -> Int -> List(Html Msg)
 calculatorField alt_ image amount event calculated =
   [ img [ src image, alt alt_, title alt_ ] []
   , input [ value (String.fromInt amount), onInput event ] []
   , input [ value (String.fromInt calculated), disabled True ] []
-  ]
-
-outputField: String -> String -> String -> List(Html Msg)
-outputField alt_ image t =
-  [ img [ src image, alt alt_, title alt_ ] []
-  , span [ class "read-only-input" ] [ text t ]
   ]
