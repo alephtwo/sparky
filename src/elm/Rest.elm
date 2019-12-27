@@ -4,13 +4,13 @@ import Http
 import Types exposing (Msg(..))
 import Json.Decode exposing (Decoder, field, float)
 
-getExchangeRate: Cmd Msg
-getExchangeRate =
+getExchangeRate: String -> Cmd Msg
+getExchangeRate baseCurrency =
   Http.get
-    { url = "https://api.exchangeratesapi.io/latest?base=JPY&symbols=USD"
-    , expect = Http.expectJson GotExchangeRate exchangeRateDecoder
+    { url = "https://api.exchangeratesapi.io/latest?base=JPY&symbols=" ++ baseCurrency
+    , expect = Http.expectJson GotExchangeRate (exchangeRateDecoder baseCurrency)
     }
 
-exchangeRateDecoder: Decoder Float
-exchangeRateDecoder =
-  field "rates" (field "USD" float)
+exchangeRateDecoder: String -> Decoder Float
+exchangeRateDecoder baseCurrency =
+  field "rates" (field baseCurrency float)

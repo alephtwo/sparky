@@ -5,7 +5,7 @@ import Types exposing (Flags, Model, Msg(..))
 
 init: Flags -> (Model, Cmd Msg)
 init _ =
-  (initialState, Rest.getExchangeRate)
+  (initialState, Rest.getExchangeRate initialState.baseCurrency)
 
 update: Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -17,13 +17,15 @@ update msg model =
         Err _ ->
           (model, Cmd.none)
     SetCrystals x ->
-      ({ model | crystals = parseInt x } , Cmd.none)
+      ({ model | crystals = parseInt x }, Cmd.none)
     SetTickets x ->
-      ({ model | tickets = parseInt x } , Cmd.none)
+      ({ model | tickets = parseInt x }, Cmd.none)
     SetTenPartTickets x ->
-      ({ model | tenPartTickets = parseInt x } , Cmd.none)
+      ({ model | tenPartTickets = parseInt x }, Cmd.none)
     SetSparks x ->
-      ({ model | sparks = parseInt x } , Cmd.none)
+      ({ model | sparks = parseInt x }, Cmd.none)
+    SetBaseCurrency x ->
+      ({ model | baseCurrency = x }, Rest.getExchangeRate x)
 
 subscriptions : Model -> Sub Msg
 subscriptions _ =
@@ -36,6 +38,7 @@ initialState =
   , tickets = 0
   , tenPartTickets = 0
   , sparks = 0
+  , baseCurrency = "USD"
   }
 
 parseInt: String -> Int
