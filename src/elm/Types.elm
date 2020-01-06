@@ -12,10 +12,10 @@ type Msg
 
 type alias Model =
   { exchangeRate: Float
-  , crystals: Int
-  , tickets: Int
-  , tenPartTickets: Int
-  , sparks: Int
+  , crystals: Maybe Int
+  , tickets: Maybe Int
+  , tenPartTickets: Maybe Int
+  , sparks: Maybe Int
   , baseCurrency: String
   }
 

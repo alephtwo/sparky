@@ -34,17 +34,16 @@ subscriptions _ =
 initialState: Model
 initialState =
   { exchangeRate = 0
-  , crystals = 0
-  , tickets = 0
-  , tenPartTickets = 0
-  , sparks = 0
+  , crystals = Just 0
+  , tickets = Just 0
+  , tenPartTickets = Just 0
+  , sparks = Just 0
   , baseCurrency = "USD"
   }
 
-parseInt: String -> Int
+parseInt: String -> Maybe Int
 parseInt str =
   str
   |> String.filter Char.isDigit
   |> String.slice 0 6
   |> String.toInt
-  |> Maybe.withDefault 0

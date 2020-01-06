@@ -11,10 +11,10 @@ view: Model -> Html Msg
 view model =
   let
     calculated =
-      { fromCrystals = model.crystals // Costs.crystalsPerRoll
-      , fromTickets = model.tickets
-      , fromTenPartTickets = model.tenPartTickets * 10
-      , fromSparks = model.sparks
+      { fromCrystals = (model.crystals |> Maybe.withDefault 0) // Costs.crystalsPerRoll
+      , fromTickets = (model.tickets |> Maybe.withDefault 0)
+      , fromTenPartTickets = (model.tenPartTickets |> Maybe.withDefault 0) * 10
+      , fromSparks = (model.sparks |> Maybe.withDefault 0)
       }
     total =
       calculated.fromCrystals
@@ -65,12 +65,19 @@ describeSparkCount count =
   in
     String.fromInt count ++ " full " ++ descriptor
 
-calculatorField: String -> String -> Int -> (String -> Msg) -> Int -> List(Html Msg)
+calculatorField: String -> String -> Maybe Int -> (String -> Msg) -> Int -> List(Html Msg)
 calculatorField alt_ image amount event calculated =
-  [ img [ src image, alt alt_, title alt_ ] []
-  , input [ value (String.fromInt amount), onInput event ] []
-  , input [ value (String.fromInt calculated), disabled True ] []
-  ]
+  let
+    value_ = case amount of
+      Just x ->
+        String.fromInt x
+      Nothing ->
+        ""
+  in
+    [ img [ src image, alt alt_, title alt_ ] []
+    , input [ value value_, onInput event ] []
+    , input [ value (String.fromInt calculated), disabled True ] []
+    ]
 
 currencyOptions: List(Html Msg)
 currencyOptions =
