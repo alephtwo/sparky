@@ -13,7 +13,7 @@ type Msg
 
 
 type alias Model =
-    { exchangeRate : Float
+    { exchangeRate : Maybe Float
     , crystals : Maybe Int
     , tickets : Maybe Int
     , tenPartTickets : Maybe Int

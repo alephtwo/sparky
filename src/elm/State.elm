@@ -15,7 +15,7 @@ update msg model =
         GotExchangeRate result ->
             case result of
                 Ok rate ->
-                    ( { model | exchangeRate = rate }, Cmd.none )
+                    ( { model | exchangeRate = Just rate }, Cmd.none )
 
                 Err _ ->
                     ( model, Cmd.none )
@@ -43,7 +43,7 @@ subscriptions _ =
 
 initialState : Model
 initialState =
-    { exchangeRate = 0
+    { exchangeRate = Nothing
     , crystals = Nothing
     , tickets = Nothing
     , tenPartTickets = Nothing

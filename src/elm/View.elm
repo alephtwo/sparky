@@ -18,6 +18,9 @@ view model =
             , fromSparks = model.sparks |> Maybe.withDefault 0
             }
 
+        exchangeRate =
+            model.exchangeRate |> Maybe.withDefault 0
+
         total =
             List.sum
                 [ calculated.fromCrystals
@@ -36,7 +39,7 @@ view model =
             ceiling (toFloat neededForNextSpark / 10)
 
         pricePerTenDraw =
-            toFloat Costs.yenPerTenRoll * model.exchangeRate
+            toFloat Costs.yenPerTenRoll * exchangeRate
 
         costToSpark =
             pricePerTenDraw * toFloat tenDrawsNeeded
@@ -59,7 +62,7 @@ view model =
                       ]
                     ]
             , div [ class "footer" ]
-                [ span [] [ text (Round.ceiling 4 (1 / model.exchangeRate) ++ " " ++ model.baseCurrency ++ ":JPY") ]
+                [ span [] [ text (Round.ceiling 4 (1 / exchangeRate) ++ " " ++ model.baseCurrency ++ ":JPY") ]
                 , text " | "
                 , a [ href "https://www.ncpgambling.org/help-treatment/national-helpline-1-800-522-4700/" ] [ text "National Problem Gambling Helpline" ]
                 ]
