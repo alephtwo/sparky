@@ -1,11 +1,7 @@
 module Costs exposing (crystalsPerRoll, yenPerTenRoll)
 
-
 crystalsPerRoll : Int
-crystalsPerRoll =
-    300
-
+crystalsPerRoll = 300
 
 yenPerTenRoll : Int
-yenPerTenRoll =
-    3150
+yenPerTenRoll = 3150
