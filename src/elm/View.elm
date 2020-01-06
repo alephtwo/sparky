@@ -2,7 +2,7 @@ module View exposing (view)
 
 import Costs
 import Html exposing (Html, a, div, img, input, option, select, span, text)
-import Html.Attributes exposing (alt, class, disabled, href, src, title, value)
+import Html.Attributes exposing (alt, class, disabled, href, placeholder, src, title, value)
 import Html.Events exposing (onInput)
 import Round
 import Types exposing (Model, Msg(..))
@@ -19,10 +19,12 @@ view model =
             }
 
         total =
-            calculated.fromCrystals
-                + calculated.fromTickets
-                + calculated.fromTenPartTickets
-                + calculated.fromSparks
+            List.sum
+                [ calculated.fromCrystals
+                , calculated.fromTickets
+                , calculated.fromTenPartTickets
+                , calculated.fromSparks
+                ]
 
         sparkCount =
             total // Costs.crystalsPerRoll
@@ -48,8 +50,8 @@ view model =
                     , calculatorField "Tickets" "ticket.png" model.tickets Types.SetTickets calculated.fromTickets
                     , calculatorField "Cerulean Sparks" "cerulean-spark.jpg" model.sparks Types.SetSparks calculated.fromSparks
                     , [ img [ src "sparks.jpg", alt "Total" ] []
-                      , input [ value (String.fromInt total ++ " cerulean sparks"), disabled True ] []
-                      , input [ value (describeSparkCount sparkCount), disabled True ] []
+                      , input [ value (describeSparkCount total "cerulean"), disabled True ] []
+                      , input [ value (describeSparkCount sparkCount "full"), disabled True ] []
                       ]
                     , [ img [ src "coin.png", alt "Cost to Spark", title "Cost to Spark" ] []
                       , span [ class "read-only-input" ] [ text (Round.ceiling 2 costToSpark ++ " " ++ model.baseCurrency ++ " until next spark") ]
@@ -65,8 +67,8 @@ view model =
         ]
 
 
-describeSparkCount : Int -> String
-describeSparkCount count =
+describeSparkCount : Int -> String -> String
+describeSparkCount count label =
     let
         descriptor =
             case count of
@@ -76,11 +78,11 @@ describeSparkCount count =
                 _ ->
                     "sparks"
     in
-    String.fromInt count ++ " full " ++ descriptor
+    String.fromInt count ++ " " ++ label ++ " " ++ descriptor
 
 
 calculatorField : String -> String -> Maybe Int -> (String -> Msg) -> Int -> List (Html Msg)
-calculatorField alt_ image amount event calculated =
+calculatorField label_ image amount event calculated =
     let
         value_ =
             case amount of
@@ -90,8 +92,8 @@ calculatorField alt_ image amount event calculated =
                 Nothing ->
                     ""
     in
-    [ img [ src image, alt alt_, title alt_ ] []
-    , input [ value value_, onInput event ] []
+    [ img [ src image, alt label_, title label_ ] []
+    , input [ value value_, onInput event, placeholder label_ ] []
     , input [ value (String.fromInt calculated), disabled True ] []
     ]
 

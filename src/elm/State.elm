@@ -44,10 +44,10 @@ subscriptions _ =
 initialState : Model
 initialState =
     { exchangeRate = 0
-    , crystals = Just 0
-    , tickets = Just 0
-    , tenPartTickets = Just 0
-    , sparks = Just 0
+    , crystals = Nothing
+    , tickets = Nothing
+    , tenPartTickets = Nothing
+    , sparks = Nothing
     , baseCurrency = "USD"
     }
 
