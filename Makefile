@@ -1,8 +1,8 @@
 all: elm sass static
 
 elm:
-	elm make src/elm/Main.elm --output=public/app.js
-	terser -c -o public/app.min.js public/app.js
+	elm make src/elm/Main.elm --output=public/app.js --optimize
+	terser -cm -o public/app.min.js public/app.js
 	rm public/app.js
 
 sass:
