@@ -48,15 +48,15 @@ view model =
       [ div [ class "card" ]
         [ div [ class "calculator" ] <|
           List.concat
-            [ calculatorField "Crystals" "crystal.jpg" model.crystals Types.SetCrystals calculated.fromCrystals
-            , calculatorField "Ten Part Draw Tickets" "10part.jpg" model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
-            , calculatorField "Tickets" "ticket.png" model.tickets Types.SetTickets calculated.fromTickets
-            , calculatorField "Cerulean Sparks" "cerulean-spark.jpg" model.sparks Types.SetSparks calculated.fromSparks
-            , [ img [ src "sparks.jpg", alt "Total" ] []
+            [ calculatorField "Crystals" "crystal.webp" model.crystals Types.SetCrystals calculated.fromCrystals
+            , calculatorField "Ten Part Draw Tickets" "10part.webp" model.tenPartTickets Types.SetTenPartTickets calculated.fromTenPartTickets
+            , calculatorField "Tickets" "ticket.webp" model.tickets Types.SetTickets calculated.fromTickets
+            , calculatorField "Cerulean Sparks" "cerulean-spark.webp" model.sparks Types.SetSparks calculated.fromSparks
+            , [ img [ src "sparks.webp", alt "Total" ] []
               , input [ value (describeSparkCount total "cerulean"), disabled True ] []
               , input [ value (describeSparkCount sparkCount "full"), disabled True ] []
               ]
-            , [ img [ src "coin.png", alt "Cost to Spark", title "Cost to Spark" ] []
+            , [ img [ src "coin.webp", alt "Cost to Spark", title "Cost to Spark" ] []
               , span [ class "read-only-input" ] [ text (Round.ceiling 2 costToSpark ++ " " ++ model.baseCurrency ++ " until next spark") ]
               , select [ Html.Events.onInput SetBaseCurrency ] currencyOptions
               ]
