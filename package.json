@@ -1,0 +1,41 @@
+{
+  "name": "sparky",
+  "version": "1.0.0",
+  "description": "[Spark it up Sparky!](https://www.youtube.com/watch?v=ukjnrXTTvPY&t=1m07s)",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "lint": "eslint --ext ts,tsx ./src && prettier --check ./src",
+    "format": "prettier --write ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alephtwo/sparky.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alephtwo/sparky/issues"
+  },
+  "homepage": "https://github.com/alephtwo/sparky#readme",
+  "devDependencies": {
+    "@types/react": "16.9.54",
+    "@types/react-dom": "16.9.9",
+    "@typescript-eslint/eslint-plugin": "4.6.0",
+    "@typescript-eslint/parser": "4.6.0",
+    "clean-webpack-plugin": "3.0.0",
+    "eslint": "7.12.1",
+    "html-webpack-plugin": "4.5.0",
+    "prettier": "2.1.2",
+    "ts-loader": "8.0.7",
+    "typescript": "4.0.5",
+    "webpack": "5.3.0",
+    "webpack-cli": "4.1.0",
+    "webpack-dev-server": "3.11.0"
+  },
+  "dependencies": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
+}
