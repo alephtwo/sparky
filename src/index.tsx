@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Application from './view/Application';
+import Application from './Application';
 
 const mount = document.getElementById('app');
 

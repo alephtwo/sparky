@@ -4,10 +4,10 @@ import { useReducer } from 'react';
 type Message = 'setCrystals' | 'setTickets' | 'setTenPartTickets' | 'setSparks';
 
 interface State {
-  crystals: number;
-  tickets: number;
-  tenPartTickets: number;
-  sparks: number;
+  crystals: number | '';
+  tickets: number | '';
+  tenPartTickets: number | '';
+  sparks: number | '';
 }
 
 interface Action {
@@ -26,12 +26,12 @@ function reducer(state: State, action: Action): State {
   const value = sanitizeNumber(action.value);
 
   switch (action.type) {
+    case 'setCrystals':
+      return extendCopy(state, { crystals: value });
     case 'setTickets':
       return extendCopy(state, { tickets: value });
     case 'setTenPartTickets':
       return extendCopy(state, { tenPartTickets: value });
-    case 'setCrystals':
-      return extendCopy(state, { crystals: value });
     case 'setSparks':
       return extendCopy(state, { sparks: value });
     default:
@@ -47,30 +47,39 @@ function render(): JSX.Element {
   };
 
   const results: State = {
-    crystals: Math.floor(state.crystals / 300),
-    tickets: state.tickets,
-    tenPartTickets: state.tenPartTickets * 10,
-    sparks: state.sparks,
+    crystals: Math.floor((state.crystals || 0) / 300),
+    tickets: state.tickets || 0,
+    tenPartTickets: (state.tenPartTickets || 0) * 10,
+    sparks: state.sparks || 0,
   };
 
-  const sum = results.crystals + results.tickets + results.tenPartTickets + results.sparks;
+  const sum = Object.values(results).reduce((acc, element) => acc + element, 0);
 
   return (
     <div>
       <div>
-        <input type="text" value={state.crystals} onChange={getOnChange('setCrystals')} />
+        <label htmlFor="crystals">Crystals</label>
+        <input type="text" id="crystals" value={state.crystals} onChange={getOnChange('setCrystals')} />
         <input type="text" disabled={true} value={results.crystals} />
       </div>
       <div>
-        <input type="text" value={state.tickets} onChange={getOnChange('setTickets')} />
+        <label htmlFor="tickets">Tickets</label>
+        <input type="text" id="tickets" value={state.tickets} onChange={getOnChange('setTickets')} />
         <input type="text" disabled={true} value={results.tickets} />
       </div>
       <div>
-        <input type="text" value={state.tenPartTickets} onChange={getOnChange('setTenPartTickets')} />
+        <label htmlFor="ten-part-tickets">Ten Part Tickets</label>
+        <input
+          type="text"
+          id="ten-part-tickets"
+          value={state.tenPartTickets}
+          onChange={getOnChange('setTenPartTickets')}
+        />
         <input type="text" disabled={true} value={results.tenPartTickets} />
       </div>
       <div>
-        <input type="text" value={state.sparks} onChange={getOnChange('setSparks')} />
+        <label htmlFor="cerulean-sparks">Cerulean Sparks</label>
+        <input type="text" id="cerulean-sparks" value={state.sparks} onChange={getOnChange('setSparks')} />
         <input type="text" disabled={true} value={results.sparks} />
       </div>
       <div>
