@@ -1,15 +1,15 @@
 all: elm sass static
 
 elm:
-	elm make src/elm/Main.elm --output=public/app.js --optimize
-	terser -cm -o public/app.min.js public/app.js
-	rm public/app.js
+	elm make src/elm/Main.elm --output=app.js --optimize
+	terser -cm -o app.min.js app.js
+	rm app.js
 
 sass:
-	sass --no-source-map src/scss/main.scss public/app.css
+	sass --no-source-map src/scss/main.scss app.css
 
 static:
-	cp -r src/static/* public/
+	cp -r src/static/* .
 
 clean:
-	rm -rf public
+	rm -f index.html app.min.js app.css *.webp
