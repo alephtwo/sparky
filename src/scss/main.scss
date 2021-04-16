@@ -19,7 +19,7 @@ select {
 
 input, span.read-only-input {
   padding-left: 5px;
-  font-size: 20px;
+  font-size: $font-size;
 }
 
 div.backdrop {
@@ -57,7 +57,7 @@ div.card {
 div.calculator {
   display: grid;
   align-items: center;
-  grid-template-rows: repeat(6, $input-height);
+  grid-template-rows: repeat(5, $input-height);
   grid-template-columns: $input-height 1fr 1fr;
   grid-gap: $grid-gap;
   margin-bottom: $grid-gap;
@@ -74,4 +74,13 @@ div.footer {
   width: 100%;
   text-align: center;
   font-size: 12px;
+}
+
+div.result {
+  width: 100%;
+  text-align: center;
+  margin-top: $spacing;
+  margin-bottom: $spacing;
+  font-size: $font-size;
+  font-weight: bold;
 }

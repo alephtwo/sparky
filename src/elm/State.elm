@@ -1,11 +1,10 @@
 module State exposing (init, subscriptions, update)
 
-import Rest
 import Types exposing (Flags, Model, Msg(..))
 
 init : Flags -> (Model, Cmd Msg)
 init _ =
-  (initialState, Rest.getExchangeRate initialState.baseCurrency)
+  (initialState, Cmd.none)
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -24,8 +23,6 @@ update msg model =
       ({ model | tenPartTickets = parseInt x }, Cmd.none)
     SetSparks x ->
       ({ model | sparks = parseInt x }, Cmd.none)
-    SetBaseCurrency x ->
-      ({ model | baseCurrency = x }, Rest.getExchangeRate x)
 
 subscriptions : Model -> Sub Msg
 subscriptions _ =
@@ -38,7 +35,6 @@ initialState =
   , tickets = Nothing
   , tenPartTickets = Nothing
   , sparks = Nothing
-  , baseCurrency = "USD"
   }
 
 

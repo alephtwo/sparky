@@ -1,10 +1,9 @@
 module View exposing (view)
 
 import Costs
-import Html exposing (Html, a, div, img, input, option, select, span, text)
+import Html exposing (Html, a, div, img, input, span, text)
 import Html.Attributes exposing (alt, class, disabled, href, placeholder, src, title, value)
 import Html.Events exposing (onInput)
-import Round
 import Types exposing (Model, Msg(..))
 
 
@@ -17,9 +16,6 @@ view model =
       , fromTenPartTickets = (model.tenPartTickets |> Maybe.withDefault 0) * 10
       , fromSparks = model.sparks |> Maybe.withDefault 0
       }
-
-    exchangeRate =
-      model.exchangeRate |> Maybe.withDefault 0
 
     total =
       List.sum
@@ -38,11 +34,8 @@ view model =
     tenDrawsNeeded =
       ceiling (toFloat neededForNextSpark / 10)
 
-    pricePerTenDraw =
-      toFloat Costs.yenPerTenRoll * exchangeRate
-
     costToSpark =
-      pricePerTenDraw * toFloat tenDrawsNeeded
+      Costs.yenPerTenRoll * tenDrawsNeeded
   in
     div []
       [ div [ class "card" ]
@@ -56,15 +49,12 @@ view model =
               , input [ value (describeSparkCount total "cerulean"), disabled True ] []
               , input [ value (describeSparkCount sparkCount "full"), disabled True ] []
               ]
-            , [ img [ src "coin.webp", alt "Cost to Spark", title "Cost to Spark" ] []
-              , span [ class "read-only-input" ] [ text (Round.ceiling 2 costToSpark ++ " " ++ model.baseCurrency ++ " until next spark") ]
-              , select [ Html.Events.onInput SetBaseCurrency ] currencyOptions
-              ]
             ]
+        , div [ class "result" ]
+          [ span [ class "result" ] [ text (String.fromInt costToSpark ++ "JPY until next spark") ]
+          ]
         , div [ class "footer" ]
-          [ span [] [ text (Round.ceiling 4 (1 / exchangeRate) ++ " " ++ model.baseCurrency ++ ":JPY") ]
-          , text " | "
-          , a [ href "https://www.ncpgambling.org/help-treatment/national-helpline-1-800-522-4700/" ] [ text "National Problem Gambling Helpline" ]
+          [ a [ href "https://www.ncpgambling.org/help-treatment/national-helpline-1-800-522-4700/" ] [ text "National Problem Gambling Helpline" ]
           ]
         ]
       ]
@@ -95,44 +85,3 @@ calculatorField label_ image amount event calculated =
     , input [ value value_, onInput event, placeholder label_ ] []
     , input [ value (String.fromInt calculated), disabled True ] []
     ]
-
-currencyOptions : List (Html Msg)
-currencyOptions =
-  let
-    currencies =
-      [ "USD"
-      , "EUR"
-      , "CAD"
-      , "GBP"
-      , "AUD"
-      , "BGN"
-      , "BRL"
-      , "CHF"
-      , "CNY"
-      , "CZK"
-      , "DKK"
-      , "HKD"
-      , "HRK"
-      , "HUF"
-      , "IDR"
-      , "ILS"
-      , "INR"
-      , "ISK"
-      , "JPY"
-      , "KRW"
-      , "MXN"
-      , "MYR"
-      , "NOK"
-      , "NZD"
-      , "PHP"
-      , "PLN"
-      , "RON"
-      , "RUB"
-      , "SEK"
-      , "SGD"
-      , "THB"
-      , "TRY"
-      , "ZAR"
-      ]
-  in
-    List.map (\c -> option [ value c ] [ text c ]) currencies

@@ -8,7 +8,6 @@ type Msg
   | SetTickets String
   | SetTenPartTickets String
   | SetSparks String
-  | SetBaseCurrency String
 
 type alias Model =
   { exchangeRate : Maybe Float
@@ -16,7 +15,6 @@ type alias Model =
   , tickets : Maybe Int
   , tenPartTickets : Maybe Int
   , sparks : Maybe Int
-  , baseCurrency : String
   }
 
 type alias Calculated =
