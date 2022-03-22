@@ -9,10 +9,10 @@ This is a simple web application to aid in financial calculations related to
 
 The user inputs the number they possess of each of the following:
 
-* Crystals (300 per draw)
-* Ten Part Draw Tickets
-* Draw Tickets
-* Cerulean Sparks
+- Crystals (300 per draw)
+- Ten Part Draw Tickets
+- Draw Tickets
+- Cerulean Sparks
 
 The calculator then determines the number of ten draws that must be completed
 in order to hit 300 cerulean sparks and associates that with a cost in JPY:
@@ -28,9 +28,9 @@ spark.
 
 You'll need to have the following installed and available on the PATH:
 
-* [elm](https://guide.elm-lang.org/install/elm.html)
-* [dart-sass](https://sass-lang.com/dart-sass) (or some other SASS implementation)
-* [terser](https://terser.org/) for minifying
+- [elm](https://guide.elm-lang.org/install/elm.html)
+- [dart-sass](https://sass-lang.com/dart-sass) (or some other SASS implementation)
+- [terser](https://terser.org/) for minifying
 
 After that, it's as simple as building using Make:
 
