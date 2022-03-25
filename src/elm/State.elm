@@ -11,14 +11,6 @@ init _ =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        GotExchangeRate result ->
-            case result of
-                Ok rate ->
-                    ( { model | exchangeRate = Just rate }, Cmd.none )
-
-                Err _ ->
-                    ( model, Cmd.none )
-
         SetCrystals x ->
             ( { model | crystals = parseInt x }, Cmd.none )
 
@@ -39,8 +31,7 @@ subscriptions _ =
 
 initialState : Model
 initialState =
-    { exchangeRate = Nothing
-    , crystals = Nothing
+    { crystals = Nothing
     , tickets = Nothing
     , tenPartTickets = Nothing
     , sparks = Nothing

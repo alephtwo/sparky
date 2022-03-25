@@ -4,16 +4,14 @@ import Http
 
 
 type Msg
-    = GotExchangeRate (Result Http.Error Float)
-    | SetCrystals String
+    = SetCrystals String
     | SetTickets String
     | SetTenPartTickets String
     | SetSparks String
 
 
 type alias Model =
-    { exchangeRate : Maybe Float
-    , crystals : Maybe Int
+    { crystals : Maybe Int
     , tickets : Maybe Int
     , tenPartTickets : Maybe Int
     , sparks : Maybe Int

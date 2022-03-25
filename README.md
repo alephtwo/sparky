@@ -15,10 +15,10 @@ The user inputs the number they possess of each of the following:
 * Cerulean Sparks
 
 The calculator then determines the number of ten draws that must be completed
-in order to hit 300 cerulean sparks and associates that with a cost in USD:
+in order to hit 300 cerulean sparks and associates that with a cost in JPY:
 
 ```
-required ten draws * 3150 JPY per ten draw * current JPY to USD exchange rate
+required ten draws * 3150 JPY per ten draw
 ```
 
 If the user has more than one spark, the cost is always determined for the next
