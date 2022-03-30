@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "public",
+    "sourceMap": true,
+    "module": "commonjs",
+    "lib": ["dom", "es2020"],
+    "target": "es6",
+    "jsx": "react",
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  }
+}
