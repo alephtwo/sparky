@@ -26,33 +26,23 @@ spark.
 
 ## Development
 
-You'll need to have the following installed and available on the PATH:
+Pull in dependences:
 
-- [elm](https://guide.elm-lang.org/install/elm.html)
-- [dart-sass](https://sass-lang.com/dart-sass) (or some other SASS implementation)
-- [terser](https://terser.org/) for minifying
-
-After that, it's as simple as building using Make:
-
-```sh
-make
+```shell
+> npm install
 ```
 
-It's suggested that you use some sort of simple HTTP server to serve the
-resulting `public` directory.
+Start a development server:
 
-When any changes are made, just run `make` again to recompile everything and
-regenerate the `public` directory. In theory, this can be done with a file
-watcher - although compiling takes very little time, so its effect is basically
-negligible.
+```shell
+> npm start
+```
 
 ## Contributing
 
 1. Fork the repo.
 1. Make your changes.
+1. Ensure that `npm run lint` does not return any errors.
 1. Send a pull request.
 
 Please make sure to follow reasonable style standards and conventions.
-
-Note that this repository does not use NPM. This is intentional, and is unlikely
-to change. Please do not send in pull requests that add NPM as a dependency.

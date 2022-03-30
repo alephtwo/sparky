@@ -9,6 +9,7 @@ export const initialState: State = {
 };
 
 export function reducer(state: State, message: Message) {
+  console.debug(message);
   switch (message.action) {
     case 'set-crystals':
       return produce(state, (next) => {
