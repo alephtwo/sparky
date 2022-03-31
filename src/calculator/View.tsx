@@ -3,13 +3,9 @@ import * as React from 'react';
 import { useReducer } from 'react';
 import { reducer, initialState } from './State';
 import { State, UserEnteredNumber } from './Types';
-//@ts-ignore
 import CrystalImage from '../static/crystal.webp';
-//@ts-ignore
 import TicketImage from '../static/ticket.webp';
-//@ts-ignore
 import TenPartTicketImage from '../static/10part.webp';
-//@ts-ignore
 import SparksImage from '../static/sparks.webp';
 
 const moneyFormatter = Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' });
