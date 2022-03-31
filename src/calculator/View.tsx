@@ -9,8 +9,10 @@ import TenPartTicketImage from '../static/10part.webp';
 import SparksImage from '../static/sparks.webp';
 import { Box } from '@mui/system';
 import AnnouncementRounded from '@mui/icons-material/AnnouncementRounded';
+import * as i18n from './i18n';
 
 const moneyFormatter = Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' });
+const messages = i18n.getMessageBundle();
 
 export function View() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -55,7 +57,7 @@ export function View() {
               fullWidth
               value={state.crystals}
               onChange={callbacks.setCrystals}
-              label="Crystals"
+              label={messages.crystals}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -66,7 +68,7 @@ export function View() {
               fullWidth
               value={state.tickets}
               onChange={callbacks.setTickets}
-              label="Draw Tickets"
+              label={messages.tickets}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -77,7 +79,7 @@ export function View() {
               fullWidth
               value={state.tenPartTickets}
               onChange={callbacks.setTenPartTickets}
-              label="Ten Part Draw Tickets"
+              label={messages.tenPartTickets}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -88,7 +90,7 @@ export function View() {
               fullWidth
               value={state.sparks}
               onChange={callbacks.setSparks}
-              label="Cerulean Sparks"
+              label={messages.sparks}
             />
           </Stack>
         </Stack>
