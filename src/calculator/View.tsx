@@ -41,7 +41,6 @@ export function View() {
   const neededToSpark = Math.max(300 - sparks, 0);
   const tenRollsToSpark = Math.ceil(neededToSpark / 10);
 
-  console.debug('percent', percent);
   return (
     <Stack spacing={1}>
       <Paper sx={styles.paper}>
@@ -49,6 +48,7 @@ export function View() {
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
             <img src={CrystalImage} style={styles.contextImage} />
             <TextField
+              type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
               fullWidth
               value={state.crystals}
@@ -59,6 +59,7 @@ export function View() {
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
             <img src={TicketImage} style={styles.contextImage} />
             <TextField
+              type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
               fullWidth
               value={state.tickets}
@@ -69,6 +70,7 @@ export function View() {
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
             <img src={TenPartTicketImage} style={styles.contextImage} />
             <TextField
+              type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
               fullWidth
               value={state.tenPartTickets}
@@ -79,6 +81,7 @@ export function View() {
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
             <img src={SparksImage} style={styles.contextImage} />
             <TextField
+              type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
               fullWidth
               value={state.sparks}
