@@ -1,4 +1,4 @@
-import { LinearProgress, Paper, Stack, TextField, Typography } from '@mui/material';
+import { LinearProgress, Link, Paper, Stack, TextField, Typography } from '@mui/material';
 import * as React from 'react';
 import { useReducer } from 'react';
 import { reducer, initialState } from './State';
@@ -7,6 +7,8 @@ import CrystalImage from '../static/crystal.webp';
 import TicketImage from '../static/ticket.webp';
 import TenPartTicketImage from '../static/10part.webp';
 import SparksImage from '../static/sparks.webp';
+import { Box } from '@mui/system';
+import AnnouncementRounded from '@mui/icons-material/AnnouncementRounded';
 
 const moneyFormatter = Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' });
 
@@ -98,6 +100,12 @@ export function View() {
             {sparks} / 300 ({percent}%)
           </Typography>
           <Typography variant="h6">{moneyFormatter.format(tenRollsToSpark * 3150)}</Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <AnnouncementRounded sx={{ pr: 1 }} color="error" />
+            <Link variant="caption" href="https://www.ncpgambling.org/help-treatment/national-helpline-1-800-522-4700/">
+              National Problem Gambling Helpline
+            </Link>
+          </Box>
         </Stack>
       </Paper>
     </Stack>
