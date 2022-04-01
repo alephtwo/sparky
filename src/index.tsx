@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Sparky } from './Sparky';
+import { Sparky } from './sparky/Sparky';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
 const theme = createTheme();

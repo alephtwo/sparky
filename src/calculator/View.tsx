@@ -3,19 +3,19 @@ import * as React from 'react';
 import { useReducer } from 'react';
 import { reducer, initialState } from './State';
 import { State, UserEnteredNumber } from './Types';
-import CrystalImage from '../static/crystal.webp';
-import TicketImage from '../static/ticket.webp';
-import TenPartTicketImage from '../static/10part.webp';
-import SparksImage from '../static/sparks.webp';
 import { Box } from '@mui/system';
 import AnnouncementRounded from '@mui/icons-material/AnnouncementRounded';
-import * as i18n from './i18n';
+import { SparkyTheme } from '../sparky/themes';
 
 const moneyFormatter = Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' });
-const messages = i18n.getMessageBundle();
 
-export function View() {
+interface ViewProps {
+  theme: SparkyTheme;
+}
+
+export function View(props: ViewProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { theme } = props;
 
   const callbacks = {
     setCrystals: (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -50,47 +50,47 @@ export function View() {
       <Paper sx={styles.paper}>
         <Stack spacing={1} alignItems="center">
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
-            <img src={CrystalImage} style={styles.contextImage} />
+            <img src={theme.crystalsIcon} style={styles.contextImage} />
             <TextField
               type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
               fullWidth
               value={state.crystals}
               onChange={callbacks.setCrystals}
-              label={messages.crystals}
+              label={theme.text.crystals}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
-            <img src={TicketImage} style={styles.contextImage} />
+            <img src={theme.ticketsIcon} style={styles.contextImage} />
             <TextField
               type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
               fullWidth
               value={state.tickets}
               onChange={callbacks.setTickets}
-              label={messages.tickets}
+              label={theme.text.tickets}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
-            <img src={TenPartTicketImage} style={styles.contextImage} />
+            <img src={theme.tenPartTicketsIcon} style={styles.contextImage} />
             <TextField
               type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
               fullWidth
               value={state.tenPartTickets}
               onChange={callbacks.setTenPartTickets}
-              label={messages.tenPartTickets}
+              label={theme.text.tenPartTickets}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
-            <img src={SparksImage} style={styles.contextImage} />
+            <img src={theme.sparksIcon} style={styles.contextImage} />
             <TextField
               type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
               fullWidth
               value={state.sparks}
               onChange={callbacks.setSparks}
-              label={messages.sparks}
+              label={theme.text.sparks}
             />
           </Stack>
         </Stack>
