@@ -5,17 +5,19 @@ import { reducer, initialState } from './State';
 import { State, UserEnteredNumber } from './Types';
 import { Box } from '@mui/system';
 import AnnouncementRounded from '@mui/icons-material/AnnouncementRounded';
-import { SparkyTheme } from '../sparky/themes';
+import { SparkyTheme, SupportedLocale } from '../sparky/SparkyTheme';
 
 const moneyFormatter = Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' });
 
 interface ViewProps {
   theme: SparkyTheme;
+  language: SupportedLocale;
 }
 
 export function View(props: ViewProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { theme } = props;
+  const text = theme.getTextBundle(props.language);
 
   const callbacks = {
     setCrystals: (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -57,7 +59,7 @@ export function View(props: ViewProps) {
               fullWidth
               value={state.crystals}
               onChange={callbacks.setCrystals}
-              label={theme.text.crystals}
+              label={text.crystals}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -68,7 +70,7 @@ export function View(props: ViewProps) {
               fullWidth
               value={state.tickets}
               onChange={callbacks.setTickets}
-              label={theme.text.tickets}
+              label={text.tickets}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -79,7 +81,7 @@ export function View(props: ViewProps) {
               fullWidth
               value={state.tenPartTickets}
               onChange={callbacks.setTenPartTickets}
-              label={theme.text.tenPartTickets}
+              label={text.tenPartTickets}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -90,7 +92,7 @@ export function View(props: ViewProps) {
               fullWidth
               value={state.sparks}
               onChange={callbacks.setSparks}
-              label={theme.text.sparks}
+              label={text.sparks}
             />
           </Stack>
         </Stack>
