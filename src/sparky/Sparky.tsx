@@ -1,4 +1,4 @@
-import { Container, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Container, Paper, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { Box } from '@mui/material';
 import * as React from 'react';
 import { useState } from 'react';
@@ -18,16 +18,18 @@ export function Sparky() {
       <Container sx={styles.container} maxWidth="xs">
         <Stack spacing={1} alignItems="center">
           <CalculatorView theme={theme} language={language as SupportedLocale} />
-          <ToggleButtonGroup
-            color="primary"
-            size="small"
-            exclusive
-            value={language}
-            onChange={(_, v) => setLanguage(v as SupportedLocale)}
-          >
-            <ToggleButton value="en-US">EN</ToggleButton>
-            <ToggleButton value="ja-JP">日本語</ToggleButton>
-          </ToggleButtonGroup>
+          <Paper>
+            <ToggleButtonGroup
+              color="primary"
+              size="small"
+              exclusive
+              value={language}
+              onChange={(_, v) => setLanguage(v as SupportedLocale)}
+            >
+              <ToggleButton value="en-US">EN</ToggleButton>
+              <ToggleButton value="ja-JP">日本語</ToggleButton>
+            </ToggleButtonGroup>
+          </Paper>
         </Stack>
       </Container>
     </Box>
