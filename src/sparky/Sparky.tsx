@@ -24,7 +24,7 @@ export function Sparky() {
               size="small"
               exclusive
               value={language}
-              onChange={(_, v) => setLanguage(v as SupportedLocale ?? language ) }
+              onChange={(_, v) => setLanguage((v as SupportedLocale) ?? language)}
             >
               <ToggleButton value="en-US">A</ToggleButton>
               <ToggleButton value="ja-JP">あ</ToggleButton>
