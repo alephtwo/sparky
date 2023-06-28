@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import { Message, State, UserEnteredNumber } from './Types';
 
 export const initialState: State = {
