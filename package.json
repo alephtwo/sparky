@@ -8,8 +8,7 @@
     "build": "webpack --mode production",
     "format": "prettier --write .",
     "lint:ts": "eslint --ext ts,tsx .",
-    "lint": "npm run lint:ts && prettier --check .",
-    "test": "mocha --recursive"
+    "lint": "npm run lint:ts && prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -22,18 +21,14 @@
   },
   "homepage": "https://github.com/alephtwo/sparky#readme",
   "devDependencies": {
-    "@types/chai": "4.3.5",
-    "@types/mocha": "10.0.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "@typescript-eslint/eslint-plugin": "6.0.0",
     "@typescript-eslint/parser": "6.0.0",
-    "chai": "4.3.7",
     "clean-webpack-plugin": "4.0.0",
     "eslint": "8.44.0",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "5.5.3",
-    "mocha": "10.2.0",
     "prettier": "3.0.0",
     "ts-loader": "9.4.4",
     "typescript": "5.1.6",
