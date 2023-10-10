@@ -21,17 +21,17 @@
   },
   "homepage": "https://github.com/alephtwo/sparky#readme",
   "devDependencies": {
-    "@types/react": "18.2.18",
-    "@types/react-dom": "18.2.7",
-    "@typescript-eslint/eslint-plugin": "6.2.1",
-    "@typescript-eslint/parser": "6.2.1",
+    "@types/react": "18.2.27",
+    "@types/react-dom": "18.2.12",
+    "@typescript-eslint/eslint-plugin": "6.7.5",
+    "@typescript-eslint/parser": "6.7.5",
     "clean-webpack-plugin": "4.0.0",
-    "eslint": "8.46.0",
+    "eslint": "8.51.0",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "5.5.3",
-    "prettier": "3.0.1",
-    "ts-loader": "9.4.4",
-    "typescript": "5.1.6",
+    "prettier": "3.0.3",
+    "ts-loader": "9.5.0",
+    "typescript": "5.2.2",
     "webpack": "5.88.2",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "4.15.1"
@@ -39,9 +39,9 @@
   "dependencies": {
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
-    "@mui/icons-material": "5.14.3",
-    "@mui/material": "5.14.3",
-    "immer": "10.0.2",
+    "@mui/icons-material": "5.14.12",
+    "@mui/material": "5.14.12",
+    "immer": "10.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }
