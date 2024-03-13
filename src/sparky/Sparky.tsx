@@ -1,14 +1,14 @@
-import { Container, Paper, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { Box } from '@mui/material';
-import * as React from 'react';
-import { useState } from 'react';
-import { View as CalculatorView } from '../calculator/View';
-import { SupportedLocale } from './SparkyTheme';
-import { GranblueTheme } from './themes';
+import { Container, Paper, Stack, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { Box } from "@mui/material";
+import * as React from "react";
+import { useState } from "react";
+import { View as CalculatorView } from "../calculator/View";
+import { SupportedLocale } from "./SparkyTheme";
+import { GranblueTheme } from "./themes";
 
 // TODO: Eventually make this changeable.
 const theme = GranblueTheme;
-const defaultLanguage = navigator.language === 'ja-JP' ? 'ja-JP' : 'en-US';
+const defaultLanguage = navigator.language === "ja-JP" ? "ja-JP" : "en-US";
 
 export function Sparky() {
   const [language, setLanguage] = useState(defaultLanguage);
@@ -41,11 +41,11 @@ const styles = {
     padding: 1,
   },
   bodyProxy: {
-    height: '100vh',
-    display: 'flex',
-    alignItems: 'center',
+    height: "100vh",
+    display: "flex",
+    alignItems: "center",
     backgroundImage: `url(${theme.backdrop})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   },
 };

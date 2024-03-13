@@ -1,29 +1,29 @@
-import { produce } from 'immer';
-import { Message, State, UserEnteredNumber } from './Types';
+import { produce } from "immer";
+import { Message, State, UserEnteredNumber } from "./Types";
 
 export const initialState: State = {
-  crystals: '',
-  tickets: '',
-  tenPartTickets: '',
-  sparks: '',
+  crystals: "",
+  tickets: "",
+  tenPartTickets: "",
+  sparks: "",
 };
 
 export function reducer(state: State, message: Message) {
   console.debug(message);
   switch (message.action) {
-    case 'set-crystals':
+    case "set-crystals":
       return produce(state, (next) => {
         next.crystals = sanitize(message.value);
       });
-    case 'set-tickets':
+    case "set-tickets":
       return produce(state, (next) => {
         next.tickets = sanitize(message.value);
       });
-    case 'set-ten-part-tickets':
+    case "set-ten-part-tickets":
       return produce(state, (next) => {
         next.tenPartTickets = sanitize(message.value);
       });
-    case 'set-sparks':
+    case "set-sparks":
       return produce(state, (next) => {
         next.sparks = sanitize(message.value);
       });
@@ -34,10 +34,10 @@ export function reducer(state: State, message: Message) {
 
 function sanitize(input: string): UserEnteredNumber {
   // Ensure we're only looking at numbers, and at most six of them.
-  const onlyDigits = input.replace(/[^\d]/, '').substring(0, 6);
+  const onlyDigits = input.replace(/[^\d]/, "").substring(0, 6);
   const attempt = parseInt(onlyDigits);
   if (isNaN(attempt)) {
-    return '';
+    return "";
   }
   return attempt;
 }

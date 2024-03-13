@@ -55,7 +55,7 @@ export class SparkyTheme {
   }
 }
 
-export type SupportedLocale = 'en-US' | 'ja-JP';
+export type SupportedLocale = "en-US" | "ja-JP";
 type TextBundle = {
   [key in SupportedLocale]: LocalizedTextBundle;
 };

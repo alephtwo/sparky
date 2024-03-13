@@ -1,13 +1,13 @@
-import { LinearProgress, Link, Paper, Stack, TextField, Typography } from '@mui/material';
-import * as React from 'react';
-import { useReducer } from 'react';
-import { reducer, initialState } from './State';
-import { State, UserEnteredNumber } from './Types';
-import { Box } from '@mui/system';
-import AnnouncementRounded from '@mui/icons-material/AnnouncementRounded';
-import { SparkyTheme, SupportedLocale } from '../sparky/SparkyTheme';
+import { LinearProgress, Link, Paper, Stack, TextField, Typography } from "@mui/material";
+import * as React from "react";
+import { useReducer } from "react";
+import { reducer, initialState } from "./State";
+import { State, UserEnteredNumber } from "./Types";
+import { Box } from "@mui/system";
+import AnnouncementRounded from "@mui/icons-material/AnnouncementRounded";
+import { SparkyTheme, SupportedLocale } from "../sparky/SparkyTheme";
 
-const moneyFormatter = Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' });
+const moneyFormatter = Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" });
 
 interface ViewProps {
   theme: SparkyTheme;
@@ -22,22 +22,22 @@ export function View(props: ViewProps) {
   const callbacks = {
     setCrystals: (e: React.ChangeEvent<HTMLInputElement>) =>
       dispatch({
-        action: 'set-crystals',
+        action: "set-crystals",
         value: e.target.value,
       }),
     setTickets: (e: React.ChangeEvent<HTMLInputElement>) =>
       dispatch({
-        action: 'set-tickets',
+        action: "set-tickets",
         value: e.target.value,
       }),
     setTenPartTickets: (e: React.ChangeEvent<HTMLInputElement>) =>
       dispatch({
-        action: 'set-ten-part-tickets',
+        action: "set-ten-part-tickets",
         value: e.target.value,
       }),
     setSparks: (e: React.ChangeEvent<HTMLInputElement>) =>
       dispatch({
-        action: 'set-sparks',
+        action: "set-sparks",
         value: e.target.value,
       }),
   };
@@ -99,12 +99,12 @@ export function View(props: ViewProps) {
       </Paper>
       <Paper sx={styles.paper}>
         <Stack spacing={1} alignItems="center">
-          <LinearProgress variant="determinate" value={Math.min(percent, 100)} sx={{ width: '100%', height: '16px' }} />
+          <LinearProgress variant="determinate" value={Math.min(percent, 100)} sx={{ width: "100%", height: "16px" }} />
           <Typography variant="caption">
             {sparks} / 300 ({percent}%)
           </Typography>
           <Typography variant="h6">{moneyFormatter.format(tenRollsToSpark * 3150)}</Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
             <AnnouncementRounded sx={{ pr: 1 }} color="error" />
             <Link variant="caption" href="https://www.ncpgambling.org/help-treatment/national-helpline-1-800-522-4700/">
               National Problem Gambling Helpline
@@ -134,9 +134,9 @@ const styles = {
     padding: 1,
   },
   contextImage: {
-    maxHeight: '56px',
+    maxHeight: "56px",
   },
   fullWidth: {
-    width: '100%',
+    width: "100%",
   },
 };

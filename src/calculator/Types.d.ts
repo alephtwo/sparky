@@ -1,4 +1,4 @@
-type UserEnteredNumber = number | '';
+type UserEnteredNumber = number | "";
 
 export interface State {
   crystals: UserEnteredNumber;
@@ -8,7 +8,7 @@ export interface State {
 }
 
 export type Message =
-  | { action: 'set-crystals'; value: string }
-  | { action: 'set-tickets'; value: string }
-  | { action: 'set-ten-part-tickets'; value: string }
-  | { action: 'set-sparks'; value: string };
+  | { action: "set-crystals"; value: string }
+  | { action: "set-tickets"; value: string }
+  | { action: "set-ten-part-tickets"; value: string }
+  | { action: "set-sparks"; value: string };
