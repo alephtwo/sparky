@@ -12,18 +12,4 @@ export const GranblueTheme: SparkyTheme = new SparkyTheme({
   ticketsIcon: TicketImage,
   tenPartTicketsIcon: TenPartTicketImage,
   sparksIcon: SparksImage,
-  text: {
-    "en-US": {
-      crystals: "Crystals",
-      tickets: "Draw Tickets",
-      tenPartTickets: "Ten Part Draw Tickets",
-      sparks: "Cerulean Sparks",
-    },
-    "ja-JP": {
-      crystals: "宝晶石",
-      tickets: "ガチャチケ",
-      tenPartTickets: "10連チケ",
-      sparks: "蒼光の御印",
-    },
-  },
 });

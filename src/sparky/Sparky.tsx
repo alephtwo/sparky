@@ -1,33 +1,42 @@
 import { Container, Paper, Stack, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { Box } from "@mui/material";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View as CalculatorView } from "../calculator/View";
-import { SupportedLocale } from "./SparkyTheme";
 import { GranblueTheme } from "./themes";
+import { useTranslation } from "react-i18next";
 
 // TODO: Eventually make this changeable.
 const theme = GranblueTheme;
-const defaultLanguage = navigator.language === "ja-JP" ? "ja-JP" : "en-US";
 
 export function Sparky() {
-  const [language, setLanguage] = useState(defaultLanguage);
+  const [language, setLanguage] = useState("en");
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    document.title = t("page-title");
+  }, []);
+
+  useEffect(() => {
+    i18n.changeLanguage(language).catch(console.error);
+    document.documentElement.setAttribute("lang", language);
+  }, [language]);
 
   return (
     <Box sx={styles.bodyProxy}>
       <Container sx={styles.container} maxWidth="xs">
         <Stack spacing={1} alignItems="center">
-          <CalculatorView theme={theme} language={language as SupportedLocale} />
+          <CalculatorView theme={theme} />
           <Paper>
             <ToggleButtonGroup
               color="primary"
               size="small"
               exclusive
               value={language}
-              onChange={(_, v) => setLanguage((v as SupportedLocale) ?? language)}
+              onChange={(_, v: string) => setLanguage(v)}
             >
-              <ToggleButton value="en-US">A</ToggleButton>
-              <ToggleButton value="ja-JP">あ</ToggleButton>
+              <ToggleButton value="en">A</ToggleButton>
+              <ToggleButton value="jp">あ</ToggleButton>
             </ToggleButtonGroup>
           </Paper>
         </Stack>

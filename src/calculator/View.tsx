@@ -5,19 +5,19 @@ import { reducer, initialState } from "./State";
 import { State, UserEnteredNumber } from "./Types";
 import { Box } from "@mui/system";
 import AnnouncementRounded from "@mui/icons-material/AnnouncementRounded";
-import { SparkyTheme, SupportedLocale } from "../sparky/SparkyTheme";
+import { SparkyTheme } from "../sparky/SparkyTheme";
+import { useTranslation } from "react-i18next";
 
 const moneyFormatter = Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" });
 
 interface ViewProps {
   theme: SparkyTheme;
-  language: SupportedLocale;
 }
 
 export function View(props: ViewProps) {
+  const { t } = useTranslation();
   const [state, dispatch] = useReducer(reducer, initialState);
   const { theme } = props;
-  const text = theme.getTextBundle(props.language);
 
   const callbacks = {
     setCrystals: (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -59,7 +59,7 @@ export function View(props: ViewProps) {
               fullWidth
               value={state.crystals}
               onChange={callbacks.setCrystals}
-              label={text.crystals}
+              label={t("crystals")}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -70,7 +70,7 @@ export function View(props: ViewProps) {
               fullWidth
               value={state.tickets}
               onChange={callbacks.setTickets}
-              label={text.tickets}
+              label={t("tickets")}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -81,7 +81,7 @@ export function View(props: ViewProps) {
               fullWidth
               value={state.tenPartTickets}
               onChange={callbacks.setTenPartTickets}
-              label={text.tenPartTickets}
+              label={t("tenPartTickets")}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -92,7 +92,7 @@ export function View(props: ViewProps) {
               fullWidth
               value={state.sparks}
               onChange={callbacks.setSparks}
-              label={text.sparks}
+              label={t("sparks")}
             />
           </Stack>
         </Stack>
