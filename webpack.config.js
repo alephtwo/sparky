@@ -21,7 +21,7 @@ const rules = {
     test: /\.webp$/,
     loader: "file-loader",
     options: {
-      name: "[name].[ext]",
+      name: "[name]-[contenthash].[ext]",
     },
   },
 };
@@ -39,7 +39,7 @@ const plugins = {
 module.exports = {
   entry: paths.entry,
   output: {
-    filename: "app.js",
+    filename: "app-[contenthash].js",
     path: paths.target,
   },
   devtool: "source-map",
