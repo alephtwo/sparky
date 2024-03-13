@@ -5,12 +5,13 @@ import { useState, useEffect } from "react";
 import { View as CalculatorView } from "../calculator/View";
 import { GranblueTheme } from "./themes";
 import { useTranslation } from "react-i18next";
+import { SupportedLanguage } from "../@types/SupportedLanguages";
 
 // TODO: Eventually make this changeable.
 const theme = GranblueTheme;
 
 export function Sparky() {
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState<SupportedLanguage>(navigator.language === "ja-JP" ? "jp" : "en");
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export function Sparky() {
               size="small"
               exclusive
               value={language}
-              onChange={(_, v: string) => setLanguage(v)}
+              onChange={(_, v: SupportedLanguage) => setLanguage(v)}
             >
               <ToggleButton value="en">A</ToggleButton>
               <ToggleButton value="jp">あ</ToggleButton>

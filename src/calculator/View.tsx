@@ -81,7 +81,7 @@ export function View(props: ViewProps) {
               fullWidth
               value={state.tenPartTickets}
               onChange={callbacks.setTenPartTickets}
-              label={t("tenPartTickets")}
+              label={t("ten-part-tickets")}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
