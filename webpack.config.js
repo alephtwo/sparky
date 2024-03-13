@@ -8,7 +8,7 @@ const path = require("path");
 const paths = {
   entry: path.resolve(__dirname, "src", "index.tsx"),
   html: path.resolve(__dirname, "src", "index.html"),
-  static: path.resolve(__dirname, "src", "static"),
+  locales: path.resolve(__dirname, "src", "static", "locales"),
   target: path.resolve(__dirname, "public"),
 };
 
@@ -32,7 +32,7 @@ const plugins = {
     template: paths.html,
   }),
   copy: new CopyWebpackPlugin({
-    patterns: [{ from: paths.static, to: paths.target }],
+    patterns: [{ from: paths.locales, to: path.join(paths.target, "locales") }],
   }),
 };
 
