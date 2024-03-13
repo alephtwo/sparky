@@ -17,7 +17,7 @@ The user inputs the number they possess of each of the following:
 The calculator then determines the number of ten draws that must be completed
 in order to hit 300 cerulean sparks and associates that with a cost in JPY:
 
-```
+```text
 required ten draws * 3150 JPY per ten draw
 ```
 

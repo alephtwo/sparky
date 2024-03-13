@@ -8,7 +8,9 @@
     "build": "webpack --mode production",
     "format": "prettier --write .",
     "lint:ts": "eslint .",
-    "lint": "npm run lint:ts && prettier --check ."
+    "prettier": "prettier --check .",
+    "mdl": "markdownlint .",
+    "lint": "npm run lint:ts && npm run prettier"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,8 @@
     "eslint": "8.57.0",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "5.6.0",
+    "markdownlint": "0.33.0",
+    "markdownlint-cli": "0.39.0",
     "prettier": "3.2.5",
     "ts-loader": "9.5.1",
     "typescript": "5.4.2",
