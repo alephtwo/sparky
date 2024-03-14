@@ -1,6 +1,7 @@
 {
   "include": ["src"],
   "compilerOptions": {
+    "types": ["vite/client"],
     "lib": ["DOM", "ES2022"],
     "target": "ES2020",
     "useDefineForClassFields": true,
