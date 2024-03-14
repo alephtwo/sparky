@@ -1,13 +1,17 @@
 {
+  "include": ["src"],
   "compilerOptions": {
-    "lib": ["dom", "es2022"],
-    "target": "es6",
-    "outDir": "public",
-    "sourceMap": true,
-    "jsx": "react",
-    "module": "es6",
-    "moduleResolution": "node",
+    "lib": ["DOM", "ES2022"],
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    "noEmit": true,
+    "jsx": "react",
+    "strict": true,
+    "sourceMap": true,
     "noImplicitAny": true,
     "strictNullChecks": true
   }

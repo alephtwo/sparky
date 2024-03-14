@@ -1,8 +1,8 @@
-import BackgroundImage from "../static/backdrop.webp";
-import CrystalImage from "../static/crystal.webp";
-import TicketImage from "../static/ticket.webp";
-import TenPartTicketImage from "../static/10part.webp";
-import SparksImage from "../static/sparks.webp";
+import BackgroundImage from "../images/backdrop.webp";
+import CrystalImage from "../images/crystal.webp";
+import TicketImage from "../images/ticket.webp";
+import TenPartTicketImage from "../images/10part.webp";
+import SparksImage from "../images/sparks.webp";
 import { SparkyTheme } from "./SparkyTheme";
 
 export const GranblueTheme: SparkyTheme = new SparkyTheme({

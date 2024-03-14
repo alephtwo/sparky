@@ -1,5 +1,5 @@
-import * as en from "../static/locales/en.json";
-import * as jp from "../static/locales/jp.json";
+import * as en from "../../public/locales/en.json";
+import * as jp from "../../public/locales/jp.json";
 
 declare module "i18next" {
   interface CustomTypeOptions {
