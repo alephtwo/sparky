@@ -5,19 +5,18 @@ import { reducer, initialState } from "./State";
 import { State, UserEnteredNumber } from "./Types";
 import { Box } from "@mui/system";
 import AnnouncementRounded from "@mui/icons-material/AnnouncementRounded";
-import { SparkyTheme } from "../sparky/SparkyTheme";
 import { useTranslation } from "react-i18next";
+
+import CrystalsIcon from "../images/crystal.webp";
+import TicketsIcon from "../images/ticket.webp";
+import TenPartTicketsIcon from "../images/10part.webp";
+import SparksIcon from "../images/sparks.webp";
 
 const moneyFormatter = Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" });
 
-interface ViewProps {
-  theme: SparkyTheme;
-}
-
-export function View(props: ViewProps) {
+export function View() {
   const { t } = useTranslation();
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { theme } = props;
 
   const callbacks = {
     setCrystals: (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -52,7 +51,7 @@ export function View(props: ViewProps) {
       <Paper sx={styles.paper}>
         <Stack spacing={1} alignItems="center">
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
-            <img src={theme.crystalsIcon} style={styles.contextImage} />
+            <img src={CrystalsIcon} style={styles.contextImage} />
             <TextField
               type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
@@ -63,7 +62,7 @@ export function View(props: ViewProps) {
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
-            <img src={theme.ticketsIcon} style={styles.contextImage} />
+            <img src={TicketsIcon} style={styles.contextImage} />
             <TextField
               type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
@@ -74,7 +73,7 @@ export function View(props: ViewProps) {
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
-            <img src={theme.tenPartTicketsIcon} style={styles.contextImage} />
+            <img src={TenPartTicketsIcon} style={styles.contextImage} />
             <TextField
               type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"
@@ -85,7 +84,7 @@ export function View(props: ViewProps) {
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
-            <img src={theme.sparksIcon} style={styles.contextImage} />
+            <img src={SparksIcon} style={styles.contextImage} />
             <TextField
               type="tel" // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
               variant="outlined"

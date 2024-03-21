@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { Sparky } from "./sparky/Sparky";
+import { Sparky } from "./Sparky";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import "./i18n";
 
