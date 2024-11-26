@@ -1,17 +1,17 @@
 {
   "include": ["src"],
   "compilerOptions": {
+    "lib": ["DOM", "ES2023"],
     "types": ["vite/client"],
-    "lib": ["dom", "es2023"],
-    "target": "es2022",
-    "sourceMap": true,
-    "noEmit": true,
-    "jsx": "react",
-    "module": "es2022",
+    "target": "ESNext",
+    "module": "ESNext",
     "moduleResolution": "bundler",
-    "resolveJsonModule": true,
+    "jsx": "react",
+    "noEmit": true,
+    "sourceMap": true,
     "strict": true,
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "resolveJsonModule": true
   }
 }
