@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fullscreen-bg {
+  @apply h-screen;
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+  background-image: url("./images/backdrop.webp");
+  @apply bg-no-repeat;
+  @apply bg-cover;
+}

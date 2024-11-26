@@ -1,58 +1,95 @@
-import { Container, Paper, Stack, ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { Box } from "@mui/material";
+import { produce } from "immer";
 import * as React from "react";
-import { useState, useEffect } from "react";
-import { View as CalculatorView } from "./calculator/View";
-import { useTranslation } from "react-i18next";
-import { SupportedLanguage } from "./@types/SupportedLanguages";
-import Backdrop from "./images/backdrop.webp";
+import { useReducer } from "react";
 
 export function Sparky() {
-  const [language, setLanguage] = useState<SupportedLanguage>(navigator.language === "ja-JP" ? "jp" : "en");
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    document.title = t("page-title");
-  }, []);
-
-  useEffect(() => {
-    i18n.changeLanguage(language).catch(console.error);
-    document.documentElement.setAttribute("lang", language);
-  }, [language]);
+  const [state, dispatch] = useReducer(reducer, intitialState);
 
   return (
-    <Box sx={styles.bodyProxy}>
-      <Container sx={styles.container} maxWidth="xs">
-        <Stack spacing={1} alignItems="center">
-          <CalculatorView />
-          <Paper>
-            <ToggleButtonGroup
-              color="primary"
-              size="small"
-              exclusive
-              value={language}
-              onChange={(_, v: SupportedLanguage) => setLanguage(v)}
-            >
-              <ToggleButton value="en">A</ToggleButton>
-              <ToggleButton value="jp">あ</ToggleButton>
-            </ToggleButtonGroup>
-          </Paper>
-        </Stack>
-      </Container>
-    </Box>
+    <div className="flex flex-col gap-2">
+      <input
+        type="text"
+        value={state.crystals}
+        onChange={(e) => {
+          dispatch({ action: "update-crystals", value: sanitize(e.target.value) });
+        }}
+      />
+      <input
+        type="text"
+        value={state.tickets}
+        onChange={(e) => {
+          dispatch({ action: "update-tickets", value: sanitize(e.target.value) });
+        }}
+      />
+      <input
+        type="text"
+        value={state.tenPartTickets}
+        onChange={(e) => {
+          dispatch({ action: "update-ten-part-tickets", value: sanitize(e.target.value) });
+        }}
+      />
+      <input
+        type="text"
+        value={state.ceruleanSparks}
+        onChange={(e) => {
+          dispatch({ action: "update-cerulean-sparks", value: sanitize(e.target.value) });
+        }}
+      />
+    </div>
   );
 }
 
-const styles = {
-  container: {
-    padding: 1,
-  },
-  bodyProxy: {
-    height: "100vh",
-    display: "flex",
-    alignItems: "center",
-    backgroundImage: `url(${Backdrop})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-  },
+type UserEnteredNumber = number | "";
+
+interface State {
+  crystals: UserEnteredNumber;
+  tickets: UserEnteredNumber;
+  tenPartTickets: UserEnteredNumber;
+  ceruleanSparks: UserEnteredNumber;
+}
+
+const intitialState: State = {
+  crystals: "",
+  tickets: "",
+  tenPartTickets: "",
+  ceruleanSparks: "",
 };
+
+type Message =
+  | { action: "update-crystals"; value: UserEnteredNumber }
+  | { action: "update-tickets"; value: UserEnteredNumber }
+  | { action: "update-ten-part-tickets"; value: UserEnteredNumber }
+  | { action: "update-cerulean-sparks"; value: UserEnteredNumber };
+
+function reducer(state: State, message: Message): State {
+  switch (message.action) {
+    case "update-crystals":
+      return produce(state, (next) => {
+        next.crystals = message.value;
+      });
+    case "update-tickets":
+      return produce(state, (next) => {
+        next.tickets = message.value;
+      });
+    case "update-ten-part-tickets":
+      return produce(state, (next) => {
+        next.tenPartTickets = message.value;
+      });
+    case "update-cerulean-sparks":
+      return produce(state, (next) => {
+        next.ceruleanSparks = message.value;
+      });
+    default:
+      return state;
+  }
+}
+
+function sanitize(input: string): UserEnteredNumber {
+  // Ensure we're only looking at numbers, and at most six of them.
+  const onlyDigits = input.replace(/[^\d]/, "").substring(0, 6);
+  const attempt = parseInt(onlyDigits);
+  if (isNaN(attempt)) {
+    return "";
+  }
+  return attempt;
+}
