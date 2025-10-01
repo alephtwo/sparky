@@ -5,8 +5,7 @@ import { reducer, initialState } from "./State";
 import { State, UserEnteredNumber } from "./Types";
 import { Box } from "@mui/system";
 import AnnouncementRounded from "@mui/icons-material/AnnouncementRounded";
-import { useTranslation } from "react-i18next";
-
+import { m } from "../paraglide/messages";
 import CrystalsIcon from "../images/crystal.webp";
 import TicketsIcon from "../images/ticket.webp";
 import TenPartTicketsIcon from "../images/10part.webp";
@@ -15,7 +14,6 @@ import SparksIcon from "../images/sparks.webp";
 const moneyFormatter = Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" });
 
 export function View() {
-  const { t } = useTranslation();
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const callbacks = {
@@ -58,7 +56,7 @@ export function View() {
               fullWidth
               value={state.crystals}
               onChange={callbacks.setCrystals}
-              label={t("crystals")}
+              label={m.crystals()}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -69,7 +67,7 @@ export function View() {
               fullWidth
               value={state.tickets}
               onChange={callbacks.setTickets}
-              label={t("tickets")}
+              label={m.tickets()}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -80,7 +78,7 @@ export function View() {
               fullWidth
               value={state.tenPartTickets}
               onChange={callbacks.setTenPartTickets}
-              label={t("ten-part-tickets")}
+              label={m["ten-part-tickets"]()}
             />
           </Stack>
           <Stack spacing={1} alignItems="center" direction="row" sx={styles.fullWidth}>
@@ -91,7 +89,7 @@ export function View() {
               fullWidth
               value={state.sparks}
               onChange={callbacks.setSparks}
-              label={t("sparks")}
+              label={m.sparks()}
             />
           </Stack>
         </Stack>

@@ -5,7 +5,7 @@ import tseslint from "typescript-eslint";
 export default defineConfig(
   eslint.configs.recommended,
   {
-    ignores: ["dist/**", "coverage/**", "reports/**"],
+    ignores: ["dist/**", "coverage/**", "reports/**", "src/paraglide/**"],
   },
   {
     files: ["**/*.ts", "**/*.tsx"],

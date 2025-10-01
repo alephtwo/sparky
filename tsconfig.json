@@ -6,6 +6,7 @@
     "target": "es2022",
     "sourceMap": true,
     "noEmit": true,
+    "allowJs": true,
     "jsx": "react",
     "module": "es2022",
     "moduleResolution": "bundler",
