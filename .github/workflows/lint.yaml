@@ -20,6 +20,8 @@ jobs:
           cache: "pnpm"
       - name: "Install Dependencies"
         run: "pnpm install --frozen-lockfile"
+      - name: "Compile paraglide"
+        run: "pnpm paraglide:compile"
       - name: "Run eslint"
         run: "pnpm lint:ts"
   prettier:
