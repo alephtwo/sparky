@@ -2,7 +2,6 @@ import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { Sparky } from "./Sparky";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import "./i18n";
 
 const theme = createTheme();
 

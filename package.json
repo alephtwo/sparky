@@ -14,7 +14,9 @@
     "format": "prettier --write .",
     "lint": "pnpm lint:ts && pnpm prettier && pnpm lint:md",
     "lint:ts": "eslint .",
-    "lint:md": "markdownlint ."
+    "lint:md": "markdownlint .",
+    "paraglide:compile": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide",
+    "paraglide:machine-translate": "inlang machine translate --project project.inlang"
   },
   "repository": {
     "type": "git",
@@ -40,7 +42,9 @@
     "typescript": "5.9.3",
     "typescript-eslint": "8.45.0",
     "vite": "7.1.7",
-    "vitest": "3.2.4"
+    "vitest": "3.2.4",
+    "@inlang/paraglide-js": "2.4.0",
+    "@inlang/cli": "3.0.0"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
