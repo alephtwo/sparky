@@ -6,4 +6,5 @@ export default {
   testRunner: "vitest",
   packageManager: "pnpm",
   plugins: ["@stryker-mutator/vitest-runner"],
+  mutate: ["src/**/*.ts", "src/**/*.tsx"],
 };

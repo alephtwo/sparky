@@ -1,4 +1,4 @@
-import { defineConfig } from "vitest/config";
+import { defaultExclude, defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react-swc";
 import { paraglideVitePlugin as paraglide } from "@inlang/paraglide-js";
 
