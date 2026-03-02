@@ -37,8 +37,8 @@ importers:
         specifier: 3.1.6
         version: 3.1.6(babel-plugin-macros@3.1.0)
       '@inlang/paraglide-js':
-        specifier: 2.13.0
-        version: 2.13.0(babel-plugin-macros@3.1.0)
+        specifier: 2.13.1
+        version: 2.13.1(babel-plugin-macros@3.1.0)
       '@mui/system':
         specifier: 7.3.8
         version: 7.3.8(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react@19.2.4)
@@ -511,8 +511,8 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
-  '@inlang/paraglide-js@2.13.0':
-    resolution: {integrity: sha512-m7JQiTeLC3tY3DusUCc4iRWlsKoMuDLhw4iGhkY0yI96ki7PK42DLsi1kMk8ubSVenKOwgrs7eqQZN1Htvkhew==}
+  '@inlang/paraglide-js@2.13.1':
+    resolution: {integrity: sha512-IsGm5gHmH6hVA9iwzvoRkt+Q9nrzX+6+G1nAmxODk/l+mpm0siPebfkXiu6DODSluFuHg0Q6fjXcDXAaqOen+Q==}
     hasBin: true
 
   '@inlang/recommend-sherlock@0.2.1':
@@ -2809,7 +2809,7 @@ snapshots:
     transitivePeerDependencies:
       - babel-plugin-macros
 
-  '@inlang/paraglide-js@2.13.0(babel-plugin-macros@3.1.0)':
+  '@inlang/paraglide-js@2.13.1(babel-plugin-macros@3.1.0)':
     dependencies:
       '@inlang/recommend-sherlock': 0.2.1
       '@inlang/sdk': 2.7.0(babel-plugin-macros@3.1.0)
