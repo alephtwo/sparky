@@ -1,7 +1,18 @@
 import { produce } from "immer";
-import { Message, State, UserEnteredNumber } from "./Types";
+import { type Message } from "./Message.mts";
+import { type UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
+import { getLocale, Locale, locales } from "../paraglide/runtime";
+
+export interface State {
+  locale: Locale;
+  crystals: UserEnteredNumber;
+  tickets: UserEnteredNumber;
+  tenPartTickets: UserEnteredNumber;
+  sparks: UserEnteredNumber;
+}
 
 export const initialState: State = {
+  locale: getLocale(),
   crystals: "",
   tickets: "",
   tenPartTickets: "",
@@ -9,7 +20,6 @@ export const initialState: State = {
 };
 
 export function reducer(state: State, message: Message) {
-  console.debug(message);
   switch (message.action) {
     case "set-crystals":
       return produce(state, (next) => {
@@ -26,6 +36,10 @@ export function reducer(state: State, message: Message) {
     case "set-sparks":
       return produce(state, (next) => {
         next.sparks = sanitize(message.value);
+      });
+    case "set-locale":
+      return produce(state, (next) => {
+        next.locale = message.value;
       });
     default:
       return state;
