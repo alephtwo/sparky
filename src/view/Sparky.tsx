@@ -2,14 +2,15 @@ import * as React from "react";
 import { useEffect, useReducer } from "react";
 import { m } from "../paraglide/messages";
 import { setLocale } from "../paraglide/runtime";
-import { initialState, reducer, State } from "../state/State.mts";
-import { UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
+import { initialState, reducer } from "../state/State.mts";
 import CrystalsIcon from "/crystal.webp?url";
 import TicketsIcon from "/ticket.webp?url";
 import TenPartTicketsIcon from "/10part.webp?url";
 import SparksIcon from "/sparks.webp?url";
-import { moneyFormatter } from "../util/moneyFormatter.mts";
+import { formatCurrency } from "../util/currency.mts";
 import { IconPhoneCall } from "@tabler/icons-react";
+import { calculate } from "../util/calculate.mts";
+import { sanitize } from "../util/sanitize.mts";
 
 export function Sparky() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -23,26 +24,31 @@ export function Sparky() {
     setCrystals: (e: React.ChangeEvent<HTMLInputElement>) =>
       dispatch({
         action: "set-crystals",
-        value: e.target.value,
+        value: sanitize(e.target.value),
       }),
     setTickets: (e: React.ChangeEvent<HTMLInputElement>) =>
       dispatch({
         action: "set-tickets",
-        value: e.target.value,
+        value: sanitize(e.target.value),
       }),
     setTenPartTickets: (e: React.ChangeEvent<HTMLInputElement>) =>
       dispatch({
         action: "set-ten-part-tickets",
-        value: e.target.value,
+        value: sanitize(e.target.value),
       }),
     setSparks: (e: React.ChangeEvent<HTMLInputElement>) =>
       dispatch({
         action: "set-sparks",
-        value: e.target.value,
+        value: sanitize(e.target.value),
       }),
   };
 
-  const sparks = calculate(state);
+  const sparks = calculate({
+    tickets: state.tickets,
+    tenPartTickets: state.tenPartTickets,
+    crystals: state.crystals,
+    sparks: state.sparks,
+  });
   const percent = Math.round(sparks / 3);
   const neededToSpark = Math.max(300 - sparks, 0);
   const tenRollsToSpark = Math.ceil(neededToSpark / 10);
@@ -105,7 +111,7 @@ export function Sparky() {
               <span className="caption-bottom text-sm">
                 {sparks} / 300 ({percent}%)
               </span>
-              <span className="text-2xl font-bold">{moneyFormatter.format(tenRollsToSpark * 3150)}</span>
+              <span className="text-2xl font-bold">{formatCurrency(tenRollsToSpark * 3150)}</span>
               <div className="flex items-center gap-2 text-sm">
                 <IconPhoneCall className="text-red-800" />
                 <a
@@ -141,17 +147,4 @@ export function Sparky() {
       </div>
     </div>
   );
-}
-
-function calculate(state: State): number {
-  return [
-    Math.floor(toNumber(state.crystals) / 300),
-    toNumber(state.tickets),
-    toNumber(state.tenPartTickets) * 10,
-    toNumber(state.sparks),
-  ].reduce((a, x) => a + x, 0);
-}
-
-function toNumber(input: UserEnteredNumber): number {
-  return input || 0;
 }

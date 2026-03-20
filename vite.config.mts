@@ -1,7 +1,8 @@
 import { defaultExclude, defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react";
 import { paraglideVitePlugin as paraglide } from "@inlang/paraglide-js";
+import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import * as path from "node:path";
 
 export default defineConfig({
   base: "/sparky",
@@ -13,5 +14,9 @@ export default defineConfig({
       outdir: "./src/paraglide",
     }),
   ],
-  test: {},
+  test: {
+    environment: "jsdom",
+    exclude: defaultExclude.concat([".stryker-tmp/**"]),
+    setupFiles: path.join(import.meta.dirname, "vitest.setup.mts"),
+  },
 });

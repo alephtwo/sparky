@@ -1,7 +1,7 @@
 {
   "include": ["src"],
   "compilerOptions": {
-    "types": ["vite/client"],
+    "types": ["vite/client", "@testing-library/jest-dom"],
     "lib": ["dom", "es2023"],
     "target": "es2022",
     "sourceMap": true,

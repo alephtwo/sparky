@@ -1,7 +1,7 @@
 import { produce } from "immer";
 import { type Message } from "./Message.mts";
 import { type UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
-import { getLocale, Locale, locales } from "../paraglide/runtime";
+import { getLocale, Locale } from "../paraglide/runtime";
 
 export interface State {
   locale: Locale;
@@ -23,19 +23,19 @@ export function reducer(state: State, message: Message) {
   switch (message.action) {
     case "set-crystals":
       return produce(state, (next) => {
-        next.crystals = sanitize(message.value);
+        next.crystals = message.value;
       });
     case "set-tickets":
       return produce(state, (next) => {
-        next.tickets = sanitize(message.value);
+        next.tickets = message.value;
       });
     case "set-ten-part-tickets":
       return produce(state, (next) => {
-        next.tenPartTickets = sanitize(message.value);
+        next.tenPartTickets = message.value;
       });
     case "set-sparks":
       return produce(state, (next) => {
-        next.sparks = sanitize(message.value);
+        next.sparks = message.value;
       });
     case "set-locale":
       return produce(state, (next) => {
@@ -44,14 +44,4 @@ export function reducer(state: State, message: Message) {
     default:
       return state;
   }
-}
-
-function sanitize(input: string): UserEnteredNumber {
-  // Ensure we're only looking at numbers, and at most six of them.
-  const onlyDigits = input.replace(/[^\d]/, "").substring(0, 6);
-  const attempt = parseInt(onlyDigits);
-  if (isNaN(attempt)) {
-    return "";
-  }
-  return attempt;
 }

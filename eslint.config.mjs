@@ -4,9 +4,9 @@ import tseslint from "typescript-eslint";
 
 export default defineConfig(
   eslint.configs.recommended,
-  globalIgnores(["dist/**", "coverage/**", "reports/**", "src/paraglide/**"]),
+  globalIgnores(["dist/**", "coverage/**", "reports/**", "src/paraglide/**", ".stryker-tmp/**"]),
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ["**/*.mts", "**/*.tsx"],
     extends: [eslint.configs.recommended, ...tseslint.configs.recommendedTypeChecked],
     languageOptions: {
       parserOptions: {
