@@ -29,6 +29,7 @@ test("renders", async () => {
 
   await import("./index.tsx");
 
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   expect(mockRoot.render).toHaveBeenCalledOnce();
 });
 

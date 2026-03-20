@@ -1,5 +1,5 @@
 {
-  "include": ["src"],
+  "include": ["src", "vite.config.mts", "vitest.setup.mts"],
   "compilerOptions": {
     "types": ["vite/client", "@testing-library/jest-dom"],
     "lib": ["dom", "es2023"],

@@ -16,6 +16,7 @@ export function CalculatorRow(props: CalculatorRowProps): React.JSX.Element {
       <input
         // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
         type="tel"
+        autoComplete="off"
         placeholder={props.placeholder}
         className="input input-xl w-full text-sm font-bold"
         value={props.value}

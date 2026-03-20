@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useEffect, useReducer } from "react";
 import { m } from "../paraglide/messages";
-import { setLocale } from "../paraglide/runtime";
 import { initialState, reducer } from "../state/State.mts";
 import CrystalsIcon from "/crystal.webp?url";
 import TicketsIcon from "/ticket.webp?url";
@@ -58,7 +57,8 @@ export function Sparky() {
 
   return (
     <div className="h-screen flex items-center bg-no-repeat bg-cover bg-[url(/backdrop.webp)]">
-      <div className="container mx-auto w-md">
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+      <div className="container mx-auto w-md z-10">
         <div className="flex flex-col items-center gap-2 p-2">
           <Paper>
             <div className="flex flex-col gap-2">
