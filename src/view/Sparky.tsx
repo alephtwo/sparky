@@ -11,6 +11,9 @@ import { formatCurrency } from "../util/currency.mts";
 import { IconPhoneCall } from "@tabler/icons-react";
 import { calculate } from "../util/calculate.mts";
 import { sanitize } from "../util/sanitize.mts";
+import { CalculatorRow } from "./components/CalculatorRow";
+import { Paper } from "./components/Paper";
+import { LocalePicker } from "./components/LocalePicker";
 
 export function Sparky() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -57,55 +60,35 @@ export function Sparky() {
     <div className="h-screen flex items-center bg-no-repeat bg-cover bg-[url(/backdrop.webp)]">
       <div className="container mx-auto w-md">
         <div className="flex flex-col items-center gap-2 p-2">
-          <div className="w-full p-4 bg-slate-100/75 border border-slate-500 rounded-sm">
+          <Paper>
             <div className="flex flex-col gap-2">
-              <div className="flex gap-2 max-h-14">
-                <img src={CrystalsIcon} />
-                <input
-                  // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
-                  type="tel"
-                  placeholder={m.crystals()}
-                  className="input input-xl w-full"
-                  value={state.crystals}
-                  onChange={callbacks.setCrystals}
-                />
-              </div>
-              <div className="flex gap-2 max-h-14">
-                <img src={TicketsIcon} />
-                <input
-                  // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
-                  type="tel"
-                  placeholder={m.tickets()}
-                  className="input input-xl w-full"
-                  value={state.tickets}
-                  onChange={callbacks.setTickets}
-                />
-              </div>
-              <div className="flex gap-2 max-h-14">
-                <img src={TenPartTicketsIcon} />
-                <input
-                  // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
-                  type="tel"
-                  placeholder={m["ten-part-tickets"]()}
-                  className="input input-xl w-full"
-                  value={state.tenPartTickets}
-                  onChange={callbacks.setTenPartTickets}
-                />
-              </div>
-              <div className="flex gap-2 max-h-14">
-                <img src={SparksIcon} />
-                <input
-                  // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
-                  type="tel"
-                  placeholder={m.crystals()}
-                  className="input input-xl w-full"
-                  value={state.sparks}
-                  onChange={callbacks.setSparks}
-                />
-              </div>
+              <CalculatorRow
+                icon={CrystalsIcon}
+                placeholder={m.crystals()}
+                value={state.crystals}
+                onChange={callbacks.setCrystals}
+              />
+              <CalculatorRow
+                icon={TicketsIcon}
+                placeholder={m.tickets()}
+                value={state.tickets}
+                onChange={callbacks.setTickets}
+              />
+              <CalculatorRow
+                icon={TenPartTicketsIcon}
+                placeholder={m["ten-part-tickets"]()}
+                value={state.tenPartTickets}
+                onChange={callbacks.setTenPartTickets}
+              />
+              <CalculatorRow
+                icon={SparksIcon}
+                placeholder={m.sparks()}
+                value={state.sparks}
+                onChange={callbacks.setSparks}
+              />
             </div>
-          </div>
-          <div className="w-full p-4 bg-slate-100/75 border border-slate-500 rounded-sm">
+          </Paper>
+          <Paper>
             <div className="flex flex-col items-center gap-2">
               <progress className="progress progress-primary" value={Math.min(percent, 100)} max="100"></progress>
               <span className="caption-bottom text-sm">
@@ -122,27 +105,11 @@ export function Sparky() {
                 </a>
               </div>
             </div>
-          </div>
-          <div className="join join-horizontal rounded-sm border border-slate-500">
-            <button
-              className={`btn join-item ${state.locale === "en" ? "bg-primary-content" : ""}`}
-              onClick={() => {
-                Promise.resolve(setLocale("en", { reload: false })).catch(console.error);
-                dispatch({ action: "set-locale", value: "en" });
-              }}
-            >
-              A
-            </button>
-            <button
-              className={`btn join-item ${state.locale === "jp" ? "bg-primary-content" : ""}`}
-              onClick={() => {
-                Promise.resolve(setLocale("jp", { reload: false })).catch(console.error);
-                dispatch({ action: "set-locale", value: "jp" });
-              }}
-            >
-              あ
-            </button>
-          </div>
+          </Paper>
+          <LocalePicker
+            locale={state.locale}
+            onChange={(locale) => dispatch({ action: "set-locale", value: locale })}
+          />
         </div>
       </div>
     </div>
