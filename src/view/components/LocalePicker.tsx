@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Component, ParentComponent } from "solid-js";
 import { Locale, setLocale } from "../../paraglide/runtime";
 
 interface LocalePickerProps {
@@ -6,9 +6,9 @@ interface LocalePickerProps {
   onChange: (locale: Locale) => void;
 }
 
-export function LocalePicker(props: LocalePickerProps): React.JSX.Element {
+export const LocalePicker: Component<LocalePickerProps> = (props) => {
   return (
-    <div className="join join-horizontal rounded-sm border border-slate-500">
+    <div class="join join-horizontal rounded-sm border border-slate-500">
       <LocaleButton locale="en" selected={props.locale === "en"} onChange={props.onChange}>
         A
       </LocaleButton>
@@ -17,18 +17,18 @@ export function LocalePicker(props: LocalePickerProps): React.JSX.Element {
       </LocaleButton>
     </div>
   );
-}
+};
 
-interface LocaleButtonProps extends React.PropsWithChildren {
+interface LocaleButtonProps {
   locale: Locale;
   onChange: (locale: Locale) => void;
   selected: boolean;
 }
 
-function LocaleButton(props: LocaleButtonProps) {
+const LocaleButton: ParentComponent<LocaleButtonProps> = (props) => {
   return (
     <button
-      className={`btn join-item ${props.selected ? "bg-primary-content" : ""}`}
+      class={`btn join-item ${props.selected ? "bg-primary-content" : ""}`}
       onClick={() => {
         Promise.resolve(setLocale(props.locale, { reload: false })).catch(console.error);
         props.onChange(props.locale);
@@ -37,4 +37,4 @@ function LocaleButton(props: LocaleButtonProps) {
       {props.children}
     </button>
   );
-}
+};

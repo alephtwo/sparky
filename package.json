@@ -33,15 +33,13 @@
     "@eslint/js": "10.0.1",
     "@inlang/cli": "3.1.7",
     "@inlang/paraglide-js": "2.15.0",
+    "@solidjs/testing-library": "0.8.10",
     "@stryker-mutator/api": "9.6.0",
     "@stryker-mutator/core": "9.6.0",
     "@stryker-mutator/vitest-runner": "9.6.0",
     "@tailwindcss/vite": "4.2.2",
     "@testing-library/jest-dom": "6.9.1",
-    "@testing-library/react": "16.3.2",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.1",
+    "@types/node": "25.5.0",
     "daisyui": "5.5.19",
     "eslint": "10.0.3",
     "fast-check": "4.6.0",
@@ -53,12 +51,12 @@
     "typescript": "5.9.3",
     "typescript-eslint": "8.57.1",
     "vite": "8.0.1",
+    "vite-plugin-solid": "2.11.11",
     "vitest": "4.1.0"
   },
   "dependencies": {
-    "@tabler/icons-react": "3.40.0",
+    "@tabler/icons-solidjs": "3.40.0",
     "immer": "11.1.4",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "solid-js": "1.9.11"
   }
 }

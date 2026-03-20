@@ -19,7 +19,7 @@ export const initialState: State = {
   sparks: "",
 };
 
-export function reducer(state: State, message: Message) {
+export function reducer(state: State, message: Message): State {
   switch (message.action) {
     case "set-crystals":
       return produce(state, (next) => {

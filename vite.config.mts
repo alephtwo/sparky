@@ -1,13 +1,13 @@
 import { defaultExclude, defineConfig } from "vitest/config";
 import { paraglideVitePlugin as paraglide } from "@inlang/paraglide-js";
-import react from "@vitejs/plugin-react";
+import solid from "vite-plugin-solid";
 import tailwindcss from "@tailwindcss/vite";
 import * as path from "node:path";
 
 export default defineConfig({
   base: "/sparky",
   plugins: [
-    react(),
+    solid(),
     tailwindcss(),
     paraglide({
       project: "./project.inlang",

@@ -15,4 +15,10 @@ export default defineConfig(
       },
     },
   },
+  {
+    files: ["**/*.test.mts", "**/*.test.tsx"],
+    rules: {
+      "@typescript-eslint/unbound-method": "off",
+    },
+  },
 );

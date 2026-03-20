@@ -1,7 +1,7 @@
 {
   "include": ["src", "vite.config.mts", "vitest.setup.mts"],
   "compilerOptions": {
-    "types": ["vite/client", "@testing-library/jest-dom"],
+    "types": ["vite/client", "@testing-library/jest-dom", "solid-js"],
     "lib": ["dom", "es2023"],
     "target": "es2022",
     "sourceMap": true,
@@ -10,7 +10,8 @@
     "allowJs": true,
     "module": "es2022",
     "moduleResolution": "bundler",
-    "jsx": "react",
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
     "resolveJsonModule": true,
     "strict": true,
     "allowImportingTsExtensions": true

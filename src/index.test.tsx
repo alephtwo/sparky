@@ -1,13 +1,11 @@
-import * as React from "react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
-import { createRoot, Root } from "react-dom/client";
+import { render } from "solid-js/web";
 
 vi.mock("./view/Sparky.tsx", () => ({
-  Sparky: <div>fake sparky</div>,
+  Sparky: () => <div>fake sparky</div>,
 }));
 
-vi.mock("react");
-vi.mock("react-dom/client");
+vi.mock("solid-js/web");
 
 beforeEach(() => {
   vi.resetModules();
@@ -20,8 +18,7 @@ afterEach(() => {
 });
 
 test("renders", async () => {
-  const mockRoot: Root = { render: vi.fn(), unmount: vi.fn() };
-  vi.mocked(createRoot).mockReturnValue(mockRoot);
+  vi.mocked(render).mockReturnValue(() => {});
 
   const mount = document.createElement("div");
   mount.id = "app";
@@ -29,8 +26,7 @@ test("renders", async () => {
 
   await import("./index.tsx");
 
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-  expect(mockRoot.render).toHaveBeenCalledOnce();
+  expect(vi.mocked(render)).toHaveBeenCalledOnce();
 });
 
 test("no root", async () => {
