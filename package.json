@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "",
   "main": "index.js",
+  "packageManager": "pnpm",
   "scripts": {
     "start": "vite",
     "test": "vitest run",
