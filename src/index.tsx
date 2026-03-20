@@ -1,16 +1,11 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { Sparky } from "./Sparky";
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { Sparky } from "./view/Sparky";
 
-const theme = createTheme();
+const mount = document.getElementById("app");
+if (mount === null) {
+  throw new Error("Unable to found root mount point");
+}
 
-const component = (
-  <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <Sparky />
-  </ThemeProvider>
-);
-
-const root = createRoot(document.getElementById("app") as HTMLDivElement);
-root.render(component);
+const root = createRoot(mount);
+root.render(<Sparky />);
