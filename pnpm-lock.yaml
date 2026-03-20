@@ -30,6 +30,9 @@ importers:
       '@inlang/paraglide-js':
         specifier: 2.15.0
         version: 2.15.0(babel-plugin-macros@3.1.0)
+      '@stryker-mutator/api':
+        specifier: 9.6.0
+        version: 9.6.0
       '@stryker-mutator/core':
         specifier: 9.6.0
         version: 9.6.0(@types/node@22.15.3)
