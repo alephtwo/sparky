@@ -16,3 +16,10 @@
     @apply font-sans;
   }
 }
+
+@layer components {
+  input.peer:not(:placeholder-shown) ~ label,
+  input.peer:focus ~ label {
+    @apply top-1 text-xs;
+  }
+}
