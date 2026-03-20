@@ -1,29 +1,33 @@
-import { Component, createEffect, createSignal } from "solid-js";
-import { m } from "../paraglide/messages";
-import { initialState, reducer, type State } from "../state/State.mts";
-import CrystalsIcon from "/crystal.webp?url";
-import TicketsIcon from "/ticket.webp?url";
-import TenPartTicketsIcon from "/10part.webp?url";
-import SparksIcon from "/sparks.webp?url";
-import { formatCurrency } from "../util/currency.mts";
 import { IconPhoneCall } from "@tabler/icons-solidjs";
+import { Component, createEffect, createMemo, createSignal } from "solid-js";
+import { formatCurrency } from "../util/currency.mts";
 import { calculate } from "../util/calculate.mts";
 import { CalculatorRow } from "./components/CalculatorRow";
 import { Paper } from "./components/Paper";
 import { LocalePicker } from "./components/LocalePicker";
-import { Message } from "../state/Message.mts";
 import type { UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
+import { m } from "../paraglide/messages";
+import { getLocale, Locale } from "../paraglide/runtime";
+import CrystalsIcon from "/crystal.webp?url";
+import TicketsIcon from "/ticket.webp?url";
+import TenPartTicketsIcon from "/10part.webp?url";
+import SparksIcon from "/sparks.webp?url";
 
 export const Sparky: Component = () => {
-  const [state, setState] = createSignal<State>(initialState);
+  const [locale, setLocale] = createSignal<Locale>(getLocale());
+  const [crystals, setCrystals] = createSignal<UserEnteredNumber>("");
+  const [tickets, setTickets] = createSignal<UserEnteredNumber>("");
+  const [tenPartTickets, setTenPartTickets] = createSignal<UserEnteredNumber>("");
+  const [ceruleanSparks, setCeruleanSparks] = createSignal<UserEnteredNumber>("");
 
-  const dispatch = (message: Message) => {
-    setState((prev) => reducer(prev, message));
-  };
+  // Re-evaluate translations when locale changes
+  createEffect(() => {
+    document.title = messages().pageTitle;
+  });
 
   // Create reactive message getters that track locale changes
-  const messages = () => {
-    void state().locale; // Dependency on locale to track changes
+  const messages = createMemo(() => {
+    void locale();
     return {
       crystals: m.crystals(),
       tickets: m.tickets(),
@@ -31,47 +35,19 @@ export const Sparky: Component = () => {
       sparks: m.sparks(),
       pageTitle: m["page-title"](),
     };
-  };
-
-  // Re-evaluate translations when locale changes
-  createEffect(() => {
-    document.title = messages().pageTitle;
   });
 
-  const dispatchHandlers = {
-    setCrystals: (value: UserEnteredNumber) =>
-      dispatch({
-        action: "set-crystals",
-        value,
-      }),
-    setTickets: (value: UserEnteredNumber) =>
-      dispatch({
-        action: "set-tickets",
-        value,
-      }),
-    setTenPartTickets: (value: UserEnteredNumber) =>
-      dispatch({
-        action: "set-ten-part-tickets",
-        value,
-      }),
-    setSparks: (value: UserEnteredNumber) =>
-      dispatch({
-        action: "set-sparks",
-        value,
-      }),
-  };
-
-  const sparks = () =>
+  const sparks = createMemo((): number =>
     calculate({
-      tickets: state().tickets,
-      tenPartTickets: state().tenPartTickets,
-      crystals: state().crystals,
-      sparks: state().sparks,
-    });
-
-  const percent = () => Math.round(sparks() / 3);
-  const neededToSpark = () => Math.max(300 - sparks(), 0);
-  const tenRollsToSpark = () => Math.ceil(neededToSpark() / 10);
+      tickets: tickets(),
+      tenPartTickets: tenPartTickets(),
+      crystals: crystals(),
+      sparks: ceruleanSparks(),
+    }),
+  );
+  const percent = createMemo(() => Math.round(sparks() / 3));
+  const neededToSpark = createMemo(() => Math.max(300 - sparks(), 0));
+  const tenRollsToSpark = createMemo(() => Math.ceil(neededToSpark() / 10));
 
   return (
     <div class="h-screen flex items-center bg-no-repeat bg-cover bg-[url(/backdrop.webp)]">
@@ -83,26 +59,21 @@ export const Sparky: Component = () => {
               <CalculatorRow
                 icon={CrystalsIcon}
                 label={messages().crystals}
-                value={state().crystals}
-                onChange={dispatchHandlers.setCrystals}
+                value={crystals()}
+                onChange={setCrystals}
               />
-              <CalculatorRow
-                icon={TicketsIcon}
-                label={messages().tickets}
-                value={state().tickets}
-                onChange={dispatchHandlers.setTickets}
-              />
+              <CalculatorRow icon={TicketsIcon} label={messages().tickets} value={tickets()} onChange={setTickets} />
               <CalculatorRow
                 icon={TenPartTicketsIcon}
                 label={messages().tenPartTickets}
-                value={state().tenPartTickets}
-                onChange={dispatchHandlers.setTenPartTickets}
+                value={tenPartTickets()}
+                onChange={setTenPartTickets}
               />
               <CalculatorRow
                 icon={SparksIcon}
                 label={messages().sparks}
-                value={state().sparks}
-                onChange={dispatchHandlers.setSparks}
+                value={ceruleanSparks()}
+                onChange={setCeruleanSparks}
               />
             </div>
           </Paper>
@@ -124,10 +95,7 @@ export const Sparky: Component = () => {
               </div>
             </div>
           </Paper>
-          <LocalePicker
-            locale={state().locale}
-            onChange={(locale) => dispatch({ action: "set-locale", value: locale })}
-          />
+          <LocalePicker locale={locale()} onChange={setLocale} />
         </div>
       </div>
     </div>

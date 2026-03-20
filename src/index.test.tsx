@@ -2,7 +2,7 @@ import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { render } from "solid-js/web";
 
 vi.mock("./view/Sparky.tsx", () => ({
-  Sparky: () => <div>fake sparky</div>,
+  Sparky: vi.fn(() => <div>fake sparky</div>),
 }));
 
 vi.mock("solid-js/web");
@@ -26,7 +26,7 @@ test("renders", async () => {
 
   await import("./index.tsx");
 
-  expect(vi.mocked(render)).toHaveBeenCalledOnce();
+  expect(render).toHaveBeenCalledOnce();
 });
 
 test("no root", async () => {
