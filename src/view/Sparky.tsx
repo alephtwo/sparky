@@ -82,25 +82,25 @@ export const Sparky: Component = () => {
             <div class="flex flex-col gap-2">
               <CalculatorRow
                 icon={CrystalsIcon}
-                placeholder={messages().crystals}
+                label={messages().crystals}
                 value={state().crystals}
                 onChange={dispatchHandlers.setCrystals}
               />
               <CalculatorRow
                 icon={TicketsIcon}
-                placeholder={messages().tickets}
+                label={messages().tickets}
                 value={state().tickets}
                 onChange={dispatchHandlers.setTickets}
               />
               <CalculatorRow
                 icon={TenPartTicketsIcon}
-                placeholder={messages().tenPartTickets}
+                label={messages().tenPartTickets}
                 value={state().tenPartTickets}
                 onChange={dispatchHandlers.setTenPartTickets}
               />
               <CalculatorRow
                 icon={SparksIcon}
-                placeholder={messages().sparks}
+                label={messages().sparks}
                 value={state().sparks}
                 onChange={dispatchHandlers.setSparks}
               />
