@@ -56,7 +56,6 @@
   },
   "dependencies": {
     "@tabler/icons-solidjs": "3.40.0",
-    "immer": "11.1.4",
     "solid-js": "1.9.11"
   }
 }
