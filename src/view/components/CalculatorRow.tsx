@@ -25,8 +25,9 @@ export const CalculatorRow: Component<CalculatorRowProps> = (props) => {
       <div class="relative w-full">
         <input
           // use "tel" to force mobile phones to use numpad, but not have the wonky html5 number api
-          type="tel"
+          type="text"
           autocomplete="off"
+          inputmode="decimal"
           placeholder=" "
           class="input w-full h-full px-4 pt-2 pb-1 text-base font-bold peer"
           value={props.value}

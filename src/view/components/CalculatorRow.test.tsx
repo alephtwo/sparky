@@ -37,7 +37,7 @@ test("input element has type tel", () => {
     <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value={0} onChange={() => {}} />
   ));
   const input = container.querySelector("input");
-  expect(input).toHaveAttribute("type", "tel");
+  expect(input).toHaveAttribute("type", "text");
 });
 
 test("input element has autoComplete set to off", () => {
