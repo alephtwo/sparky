@@ -31,8 +31,8 @@
   "homepage": "https://github.com/alephtwo/sparky#readme",
   "devDependencies": {
     "@eslint/js": "10.0.1",
-    "@inlang/cli": "3.1.7",
-    "@inlang/paraglide-js": "2.15.0",
+    "@inlang/cli": "3.1.9",
+    "@inlang/paraglide-js": "2.15.1",
     "@solidjs/testing-library": "0.8.10",
     "@stryker-mutator/api": "9.6.0",
     "@stryker-mutator/core": "9.6.0",
@@ -41,21 +41,21 @@
     "@testing-library/jest-dom": "6.9.1",
     "@types/node": "25.5.0",
     "daisyui": "5.5.19",
-    "eslint": "10.0.3",
+    "eslint": "10.1.0",
     "fast-check": "4.6.0",
     "jsdom": "29.0.1",
     "markdownlint": "0.40.0",
-    "markdownlint-cli2": "0.21.0",
+    "markdownlint-cli2": "0.22.0",
     "prettier": "3.8.1",
     "tailwindcss": "4.2.2",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.57.1",
-    "vite": "8.0.1",
+    "typescript-eslint": "8.57.2",
+    "vite": "8.0.2",
     "vite-plugin-solid": "2.11.11",
-    "vitest": "4.1.0"
+    "vitest": "4.1.1"
   },
   "dependencies": {
     "@tabler/icons-solidjs": "3.40.0",
-    "solid-js": "1.9.11"
+    "solid-js": "1.9.12"
   }
 }
