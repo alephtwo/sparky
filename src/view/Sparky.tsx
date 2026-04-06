@@ -80,12 +80,12 @@ export const Sparky: Component = () => {
           <Paper>
             <div class="flex flex-col items-center gap-2">
               <progress class="progress progress-primary" value={Math.min(percent(), 100)} max="100"></progress>
-              <span class="caption-bottom text-sm">
+              <span class="text-sm text-base-content/70">
                 {sparks()} / 300 ({percent()}%)
               </span>
               <span class="text-2xl font-bold">{formatCurrency(tenRollsToSpark() * 3150)}</span>
               <div class="flex items-center gap-2 text-sm">
-                <IconPhoneCall size={20} stroke={"2"} style={{ color: "rgb(153, 27, 27)" }} />
+                <IconPhoneCall size={20} stroke="2" class="text-error" />
                 <a
                   class="link link-primary"
                   href="https://www.ncpgambling.org/help-treatment/national-helpline-1-800-522-4700/"
@@ -95,7 +95,9 @@ export const Sparky: Component = () => {
               </div>
             </div>
           </Paper>
-          <LocalePicker locale={locale()} onChange={setLocale} />
+          <div class="self-end">
+            <LocalePicker locale={locale()} onChange={setLocale} />
+          </div>
         </div>
       </div>
     </div>

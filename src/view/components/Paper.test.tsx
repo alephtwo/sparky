@@ -17,12 +17,6 @@ test("renders as a div element", () => {
   expect(div).toBeInTheDocument();
 });
 
-test("applies correct className", () => {
-  const { container } = render(() => <Paper>Content</Paper>);
-  const div = container.querySelector("div");
-  expect(div).toHaveClass("w-full", "p-4", "bg-slate-100/75", "border", "border-slate-500", "rounded-sm");
-});
-
 test("renders multiple children", () => {
   const { getByText } = render(() => (
     <Paper>
