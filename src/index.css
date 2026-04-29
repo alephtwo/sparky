@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap");
 @import "tailwindcss";
 
-@plugin "daisyui" {
+@plugin "daisyui/index.js" {
   themes: light --default;
 }
 
