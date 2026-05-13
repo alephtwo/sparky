@@ -1,8 +1,9 @@
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { render } from "solid-js/web";
+import { type JSX } from "solid-js";
 
 vi.mock("./view/Sparky.tsx", () => ({
-  Sparky: vi.fn(() => <div>fake sparky</div>),
+  Sparky: vi.fn<() => JSX.Element>(() => <div>fake sparky</div>),
 }));
 
 vi.mock("solid-js/web");

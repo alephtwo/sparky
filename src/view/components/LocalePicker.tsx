@@ -23,14 +23,18 @@ export const LocalePicker: Component<LocalePickerProps> = (props) => {
 
   return (
     <div class="dropdown dropdown-end">
-      <div
+      <button
         tabIndex={0}
-        role="button"
         class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-base-100/80 backdrop-blur-sm border border-base-300 shadow cursor-pointer text-sm select-none"
       >
         <span class="text-base leading-none">{current().flag}</span>
         <span>{current().label}</span>
-        <svg class="w-3 h-3 opacity-60" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          class="w-3 h-3 opacity-60"
+          viewBox="0 0 10 6"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M1 1l4 4 4-4"
             stroke="currentColor"
@@ -39,11 +43,8 @@ export const LocalePicker: Component<LocalePickerProps> = (props) => {
             stroke-linejoin="round"
           />
         </svg>
-      </div>
-      <ul
-        tabIndex={0}
-        class="dropdown-content menu bg-base-100 rounded-lg border border-base-300 shadow-lg mt-1 p-1 w-40 z-10"
-      >
+      </button>
+      <ul class="dropdown-content menu bg-base-100 rounded-lg border border-base-300 shadow-lg mt-1 p-1 w-40 z-10">
         <For each={LOCALES}>
           {(l) => (
             <li>

@@ -8,7 +8,13 @@ afterEach(() => {
 
 test("renders container div with correct className", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value={0} onChange={() => {}} />
+    <CalculatorRow
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value={0}
+      onChange={() => {}}
+      alt="test"
+    />
   ));
   const div = container.querySelector("div");
   expect(div).toHaveClass("flex");
@@ -17,7 +23,13 @@ test("renders container div with correct className", () => {
 
 test("renders image element with correct src attribute", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/currency-icon.svg" label="Test placeholder" value={0} onChange={() => {}} />
+    <CalculatorRow
+      icon="/currency-icon.svg"
+      label="Test placeholder"
+      value={0}
+      onChange={() => {}}
+      alt="test"
+    />
   ));
   const img = container.querySelector("img");
   expect(img).toBeInTheDocument();
@@ -26,7 +38,13 @@ test("renders image element with correct src attribute", () => {
 
 test("renders input element", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value={0} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value={0}
+      onChange={() => {}}
+    />
   ));
   const input = container.querySelector("input");
   expect(input).toBeInTheDocument();
@@ -34,7 +52,13 @@ test("renders input element", () => {
 
 test("input element has type tel", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value={0} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value={0}
+      onChange={() => {}}
+    />
   ));
   const input = container.querySelector("input");
   expect(input).toHaveAttribute("type", "text");
@@ -42,7 +66,13 @@ test("input element has type tel", () => {
 
 test("input element has autoComplete set to off", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value={0} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value={0}
+      onChange={() => {}}
+    />
   ));
   const input = container.querySelector("input");
   expect(input).toHaveAttribute("autoComplete", "off");
@@ -50,7 +80,13 @@ test("input element has autoComplete set to off", () => {
 
 test("input placeholder matches provided prop", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Enter your amount" value={0} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Enter your amount"
+      value={0}
+      onChange={() => {}}
+    />
   ));
   const label = container.querySelector("label");
   expect(label).toBeInTheDocument();
@@ -58,7 +94,13 @@ test("input placeholder matches provided prop", () => {
 
 test("input has all required classNames", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value={0} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value={0}
+      onChange={() => {}}
+    />
   ));
   const input = container.querySelector("input");
   expect(input).toHaveClass("input");
@@ -68,7 +110,13 @@ test("input has all required classNames", () => {
 
 test("input value renders numeric value 42", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value={42} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value={42}
+      onChange={() => {}}
+    />
   ));
   const input = container.querySelector("input") as HTMLInputElement;
   expect(input.value).toBe("42");
@@ -76,7 +124,13 @@ test("input value renders numeric value 42", () => {
 
 test("input value renders empty string", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value="" onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value=""
+      onChange={() => {}}
+    />
   ));
   const input = container.querySelector("input") as HTMLInputElement;
   expect(input.value).toBe("");
@@ -84,16 +138,28 @@ test("input value renders empty string", () => {
 
 test("input value renders zero", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value={0} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value={0}
+      onChange={() => {}}
+    />
   ));
   const input = container.querySelector("input") as HTMLInputElement;
   expect(input.value).toBe("0");
 });
 
 test("onChange callback is invoked on input change", () => {
-  const onChange = vi.fn();
+  const onChange = vi.fn<() => void>();
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value="" onChange={onChange} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value=""
+      onChange={onChange}
+    />
   ));
   const input = container.querySelector("input") as HTMLInputElement;
   fireEvent.input(input, { target: { value: "123" } });
@@ -101,9 +167,15 @@ test("onChange callback is invoked on input change", () => {
 });
 
 test("onChange is called with the correct event", () => {
-  const onChange = vi.fn();
+  const onChange = vi.fn<() => void>();
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value="" onChange={onChange} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value=""
+      onChange={onChange}
+    />
   ));
   const input = container.querySelector("input") as HTMLInputElement;
   fireEvent.input(input, { target: { value: "999" } });
@@ -111,9 +183,15 @@ test("onChange is called with the correct event", () => {
 });
 
 test("input value is immediately sanitized when invalid characters are entered", () => {
-  const onChange = vi.fn();
+  const onChange = vi.fn<() => void>();
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value="" onChange={onChange} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value=""
+      onChange={onChange}
+    />
   ));
   const input = container.querySelector("input") as HTMLInputElement;
   fireEvent.input(input, { target: { value: "abc123xyz456" } });
@@ -124,7 +202,13 @@ test("input value is immediately sanitized when invalid characters are entered",
 
 test("input value updates correctly when props change", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/icon.svg" label="Placeholder 1" value={100} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/icon.svg"
+      label="Placeholder 1"
+      value={100}
+      onChange={() => {}}
+    />
   ));
 
   const input = container.querySelector("input") as HTMLInputElement;
@@ -133,7 +217,13 @@ test("input value updates correctly when props change", () => {
 
 test("placeholder updates when props change", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/icon.svg" label="Placeholder A" value={0} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/icon.svg"
+      label="Placeholder A"
+      value={0}
+      onChange={() => {}}
+    />
   ));
 
   const label = container.querySelector("label");
@@ -142,7 +232,7 @@ test("placeholder updates when props change", () => {
 
 test("icon src updates when props change", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/icon1.svg" label="Placeholder" value={0} onChange={() => {}} />
+    <CalculatorRow alt="test" icon="/icon1.svg" label="Placeholder" value={0} onChange={() => {}} />
   ));
 
   const img = container.querySelector("img");
@@ -151,29 +241,45 @@ test("icon src updates when props change", () => {
 
 test("renders image before input in DOM order", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value={0} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value={0}
+      onChange={() => {}}
+    />
   ));
   const img = container.querySelector("img");
   const input = container.querySelector("input");
-  expect(img).toBeTruthy();
-  expect(input).toBeTruthy();
-  if (img && input) {
-    expect(img.compareDocumentPosition(input)).toBe(4); // Node.DOCUMENT_POSITION_FOLLOWING
-  }
+  expect(img).toBeDefined();
+  expect(input).toBeDefined();
+  expect(img!.compareDocumentPosition(input!)).toBe(4); // Node.DOCUMENT_POSITION_FOLLOWING
 });
 
 test("large numeric values render correctly", () => {
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value={9999999} onChange={() => {}} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value={9999999}
+      onChange={() => {}}
+    />
   ));
   const input = container.querySelector("input") as HTMLInputElement;
   expect(input.value).toBe("9999999");
 });
 
 test("multiple onChange calls are tracked", () => {
-  const onChange = vi.fn();
+  const onChange = vi.fn<() => void>();
   const { container } = render(() => (
-    <CalculatorRow icon="/test-icon.svg" label="Test placeholder" value="" onChange={onChange} />
+    <CalculatorRow
+      alt="test"
+      icon="/test-icon.svg"
+      label="Test placeholder"
+      value=""
+      onChange={onChange}
+    />
   ));
   const input = container.querySelector("input") as HTMLInputElement;
   fireEvent.input(input, { target: { value: "1" } });

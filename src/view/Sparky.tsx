@@ -61,25 +61,38 @@ export const Sparky: Component = () => {
                 label={messages().crystals}
                 value={crystals()}
                 onChange={setCrystals}
+                alt="Crystals"
               />
-              <CalculatorRow icon={TicketsIcon} label={messages().tickets} value={tickets()} onChange={setTickets} />
+              <CalculatorRow
+                icon={TicketsIcon}
+                label={messages().tickets}
+                value={tickets()}
+                onChange={setTickets}
+                alt="Tickets"
+              />
               <CalculatorRow
                 icon={TenPartTicketsIcon}
                 label={messages().tenPartTickets}
                 value={tenPartTickets()}
                 onChange={setTenPartTickets}
+                alt="Ten Part Tickets"
               />
               <CalculatorRow
                 icon={SparksIcon}
                 label={messages().sparks}
                 value={ceruleanSparks()}
                 onChange={setCeruleanSparks}
+                alt="Cerulean Sparks"
               />
             </div>
           </Paper>
           <Paper>
             <div class="flex flex-col items-center gap-2">
-              <progress class="progress progress-primary" value={Math.min(percent(), 100)} max="100"></progress>
+              <progress
+                class="progress progress-primary"
+                value={Math.min(percent(), 100)}
+                max="100"
+              ></progress>
               <span class="text-sm text-base-content/70">
                 {sparks()} / 300 ({percent()}%)
               </span>

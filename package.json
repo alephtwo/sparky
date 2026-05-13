@@ -2,8 +2,17 @@
   "name": "sparky",
   "version": "2.0.0",
   "description": "",
+  "homepage": "https://github.com/alephtwo/sparky#readme",
+  "bugs": {
+    "url": "https://github.com/alephtwo/sparky/issues"
+  },
+  "license": "MIT",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alephtwo/sparky.git"
+  },
   "main": "index.js",
-  "packageManager": "pnpm",
   "scripts": {
     "start": "vite",
     "test": "vitest run",
@@ -11,26 +20,19 @@
     "mutate": "stryker run",
     "preview": "vite preview",
     "build": "pnpm paraglide:compile && tsc && vite build",
-    "prettier": "prettier --check .",
-    "format": "prettier --write .",
-    "lint": "pnpm lint:ts && pnpm prettier && pnpm lint:md",
-    "lint:ts": "eslint .",
+    "oxfmt": "oxfmt --check .",
+    "format": "oxfmt --write .",
+    "lint": "pnpm lint:ts && pnpm oxfmt && pnpm lint:md",
+    "lint:ts": "oxlint .",
     "lint:md": "markdownlint-cli2 .",
     "paraglide:compile": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide",
     "paraglide:machine-translate": "inlang machine translate --project project.inlang"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alephtwo/sparky.git"
+  "dependencies": {
+    "@tabler/icons-solidjs": "3.44.0",
+    "solid-js": "1.9.12"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alephtwo/sparky/issues"
-  },
-  "homepage": "https://github.com/alephtwo/sparky#readme",
   "devDependencies": {
-    "@eslint/js": "10.0.1",
     "@inlang/cli": "3.1.11",
     "@inlang/paraglide-js": "2.18.0",
     "@solidjs/testing-library": "0.8.10",
@@ -41,21 +43,16 @@
     "@testing-library/jest-dom": "6.9.1",
     "@types/node": "25.7.0",
     "daisyui": "5.5.19",
-    "eslint": "10.3.0",
     "fast-check": "4.8.0",
     "jsdom": "29.1.1",
     "markdownlint": "0.40.0",
     "markdownlint-cli2": "0.22.1",
-    "prettier": "3.8.3",
+    "oxfmt": "0.49.0",
+    "oxlint": "1.64.0",
     "tailwindcss": "4.3.0",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.59.3",
     "vite": "8.0.12",
     "vite-plugin-solid": "2.11.12",
     "vitest": "4.1.6"
-  },
-  "dependencies": {
-    "@tabler/icons-solidjs": "3.44.0",
-    "solid-js": "1.9.12"
   }
 }
