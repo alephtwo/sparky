@@ -25,5 +25,5 @@ test("strips non-numbers out of the string", () => {
 });
 
 test("strips strings longer than 6 digits", () => {
-  expect(sanitize("1234567")).toEqual(123456);
+  expect(sanitize("1234567")).toEqual(123_456);
 });

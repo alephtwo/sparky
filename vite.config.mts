@@ -1,4 +1,4 @@
-import * as path from "node:path";
+import path from "node:path";
 
 import { paraglideVitePlugin as paraglide } from "@inlang/paraglide-js";
 import tailwindcss from "@tailwindcss/vite";
@@ -17,7 +17,7 @@ export default defineConfig({
   ],
   test: {
     environment: "jsdom",
-    exclude: defaultExclude.concat([".stryker-tmp/**"]),
+    exclude: [...defaultExclude, ".stryker-tmp/**"],
     setupFiles: path.join(import.meta.dirname, "vitest.setup.mts"),
   },
 });

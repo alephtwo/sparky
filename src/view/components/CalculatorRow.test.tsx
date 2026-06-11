@@ -198,7 +198,7 @@ test("input value is immediately sanitized when invalid characters are entered",
   fireEvent.input(input, { target: { value: "abc123xyz456" } });
   // The input should be immediately sanitized to show only the extracted numbers
   expect(input.value).toBe("123456");
-  expect(onChange).toHaveBeenCalledWith(123456);
+  expect(onChange).toHaveBeenCalledWith(123_456);
 });
 
 test("input value updates correctly when props change", () => {
@@ -263,7 +263,7 @@ test("large numeric values render correctly", () => {
       alt="test"
       icon="/test-icon.svg"
       label="Test placeholder"
-      value={9999999}
+      value={9_999_999}
       onChange={() => {}}
     />
   ));
