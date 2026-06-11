@@ -1,4 +1,5 @@
 import { Component, For } from "solid-js";
+
 import { Locale, setLocale } from "../../paraglide/runtime";
 
 interface LocalePickerProps {

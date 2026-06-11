@@ -1,6 +1,7 @@
-import { expect, test } from "vitest";
-import { calculate } from "./calculate.mts";
 import fc from "fast-check";
+import { expect, test } from "vitest";
+
+import { calculate } from "./calculate.mts";
 
 test("happy path", () => {
   const arb = fc.record({

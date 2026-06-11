@@ -1,4 +1,5 @@
 import { render } from "solid-js/web";
+
 import { Sparky } from "./view/Sparky";
 
 const mount = document.getElementById("app");

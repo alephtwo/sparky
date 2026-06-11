@@ -1,5 +1,6 @@
-import { afterEach, expect, test, vi } from "vitest";
 import { cleanup, fireEvent, render } from "@solidjs/testing-library";
+import { afterEach, expect, test, vi } from "vitest";
+
 import { CalculatorRow } from "./CalculatorRow";
 
 afterEach(() => {

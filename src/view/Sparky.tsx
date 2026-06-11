@@ -1,17 +1,18 @@
+import TenPartTicketsIcon from "/10part.webp?url";
+import CrystalsIcon from "/crystal.webp?url";
+import SparksIcon from "/sparks.webp?url";
+import TicketsIcon from "/ticket.webp?url";
 import { IconPhoneCall } from "@tabler/icons-solidjs";
 import { Component, createEffect, createMemo, createSignal } from "solid-js";
-import { formatCurrency } from "../util/currency.mts";
-import { calculate } from "../util/calculate.mts";
-import { CalculatorRow } from "./components/CalculatorRow";
-import { Paper } from "./components/Paper";
-import { LocalePicker } from "./components/LocalePicker";
+
 import type { UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
 import { m } from "../paraglide/messages";
 import { getLocale, Locale } from "../paraglide/runtime";
-import CrystalsIcon from "/crystal.webp?url";
-import TicketsIcon from "/ticket.webp?url";
-import TenPartTicketsIcon from "/10part.webp?url";
-import SparksIcon from "/sparks.webp?url";
+import { calculate } from "../util/calculate.mts";
+import { formatCurrency } from "../util/currency.mts";
+import { CalculatorRow } from "./components/CalculatorRow";
+import { LocalePicker } from "./components/LocalePicker";
+import { Paper } from "./components/Paper";
 
 export const Sparky: Component = () => {
   const [locale, setLocale] = createSignal<Locale>(getLocale());

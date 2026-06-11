@@ -1,5 +1,5 @@
-import { type UserEnteredNumber } from "./UserEnteredNumber.mts";
 import { Locale } from "../paraglide/runtime";
+import { type UserEnteredNumber } from "./UserEnteredNumber.mts";
 
 export interface State {
   locale: Locale;

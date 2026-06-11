@@ -1,5 +1,6 @@
-import { afterEach, expect, test } from "vitest";
 import { cleanup, render } from "@solidjs/testing-library";
+import { afterEach, expect, test } from "vitest";
+
 import { Paper } from "./Paper";
 
 afterEach(() => {

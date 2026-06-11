@@ -1,5 +1,6 @@
 import fc from "fast-check";
 import { expect, test } from "vitest";
+
 import { sanitize } from "./sanitize.mts";
 
 test("accepts valid numbers", () => {
