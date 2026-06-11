@@ -51,9 +51,9 @@ export const Sparky: Component = () => {
   const tenRollsToSpark = createMemo(() => Math.ceil(neededToSpark() / 10));
 
   return (
-    <div class="h-screen flex items-center bg-no-repeat bg-cover bg-[url(/backdrop.webp)]">
+    <div class="flex h-screen items-center bg-[url(/backdrop.webp)] bg-cover bg-no-repeat">
       <div class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
-      <div class="container mx-auto w-md z-10">
+      <div class="z-10 container mx-auto w-md">
         <div class="flex flex-col items-center gap-2 p-2">
           <Paper>
             <div class="flex flex-col gap-2">
@@ -94,7 +94,7 @@ export const Sparky: Component = () => {
                 value={Math.min(percent(), 100)}
                 max="100"
               ></progress>
-              <span class="text-sm text-base-content/70">
+              <span class="text-base-content/70 text-sm">
                 {sparks()} / 300 ({percent()}%)
               </span>
               <span class="text-2xl font-bold">{formatCurrency(tenRollsToSpark() * 3150)}</span>
