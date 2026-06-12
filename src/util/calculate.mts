@@ -17,5 +17,8 @@ export function calculate(args: CalculateArgs): number {
 }
 
 function toNumber(input: UserEnteredNumber): number {
-  return input || 0;
+  if (input === "") {
+    return 0;
+  }
+  return input;
 }

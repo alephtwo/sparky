@@ -5,7 +5,21 @@
     "builtin": true,
     "browser": true
   },
+  "options": {
+    "typeAware": true
+  },
   "rules": {
+    // my own pedantry
+    "curly": "error",
+    "eqeqeq": "error",
+    "typescript/strict-boolean-expressions": [
+      "error",
+      {
+        "allowNumber": false,
+        "allowString": false
+      }
+    ],
+
     // oxc, eslint recommended /////////////////////////////////////////////////
     "constructor-super": "error",
     "for-direction": "error",

@@ -8,8 +8,8 @@ afterEach(() => {
 });
 
 test("renders children", () => {
-  const { getByText } = render(() => <Paper>Test Content</Paper>);
-  expect(getByText("Test Content")).toBeInTheDocument();
+  const dom = render(() => <Paper>Test Content</Paper>);
+  expect(dom.getByText("Test Content")).toBeInTheDocument();
 });
 
 test("renders as a div element", () => {
@@ -19,12 +19,12 @@ test("renders as a div element", () => {
 });
 
 test("renders multiple children", () => {
-  const { getByText } = render(() => (
+  const dom = render(() => (
     <Paper>
       <span>First</span>
       <span>Second</span>
     </Paper>
   ));
-  expect(getByText("First")).toBeInTheDocument();
-  expect(getByText("Second")).toBeInTheDocument();
+  expect(dom.getByText("First")).toBeInTheDocument();
+  expect(dom.getByText("Second")).toBeInTheDocument();
 });
