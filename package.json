@@ -34,13 +34,13 @@
     "solid-js": "1.9.13"
   },
   "devDependencies": {
-    "@inlang/cli": "3.1.12",
-    "@inlang/paraglide-js": "2.19.0",
+    "@inlang/cli": "3.1.14",
+    "@inlang/paraglide-js": "2.20.0",
     "@solidjs/testing-library": "0.8.10",
     "@stryker-mutator/api": "9.6.1",
     "@stryker-mutator/core": "9.6.1",
     "@stryker-mutator/vitest-runner": "9.6.1",
-    "@tailwindcss/vite": "4.3.0",
+    "@tailwindcss/vite": "4.3.1",
     "@testing-library/jest-dom": "6.9.1",
     "@types/node": "25.9.3",
     "daisyui": "5.5.23",
@@ -48,12 +48,12 @@
     "jsdom": "29.1.1",
     "markdownlint": "0.41.0",
     "markdownlint-cli2": "0.22.1",
-    "oxfmt": "0.54.0",
-    "oxlint": "1.69.0",
-    "tailwindcss": "4.3.0",
+    "oxfmt": "0.55.0",
+    "oxlint": "1.70.0",
+    "tailwindcss": "4.3.1",
     "typescript": "6.0.3",
     "vite": "8.0.16",
     "vite-plugin-solid": "2.11.12",
-    "vitest": "4.1.8"
+    "vitest": "4.1.9"
   }
 }
