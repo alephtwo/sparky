@@ -1,19 +1,19 @@
 {
   "include": ["src", "vite.config.mts", "vitest.setup.mts"],
   "compilerOptions": {
+    "lib": ["dom", "esnext"],
     "types": ["vite/client", "@testing-library/jest-dom", "solid-js"],
-    "lib": ["dom", "es2023"],
-    "target": "es2022",
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "noEmit": true,
+
+    // Build
+    "allowImportingTsExtensions": true,
     "allowJs": true,
-    "module": "es2022",
+    "module": "esnext",
     "moduleResolution": "bundler",
+    "noEmit": true,
+    "skipLibCheck": true,
+
+    // JSX
     "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "resolveJsonModule": true,
-    "strict": true,
-    "allowImportingTsExtensions": true
+    "jsxImportSource": "solid-js"
   }
 }
