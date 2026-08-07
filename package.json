@@ -29,13 +29,13 @@
     "paraglide:machine-translate": "inlang machine translate --project project.inlang"
   },
   "dependencies": {
-    "@tabler/icons-solidjs": "3.45.0",
+    "@tabler/icons-solidjs": "3.46.0",
     "oxlint-tsgolint": "7.0.2001",
     "solid-js": "1.9.14"
   },
   "devDependencies": {
-    "@inlang/cli": "3.2.0",
-    "@inlang/paraglide-js": "2.23.0",
+    "@inlang/cli": "3.3.0",
+    "@inlang/paraglide-js": "2.23.1",
     "@solidjs/testing-library": "0.8.10",
     "@stryker-mutator/api": "9.6.1",
     "@stryker-mutator/core": "9.6.1",
@@ -43,16 +43,16 @@
     "@tailwindcss/vite": "4.3.3",
     "@testing-library/jest-dom": "7.0.0",
     "@types/node": "26.1.2",
-    "daisyui": "5.7.4",
+    "daisyui": "5.7.16",
     "fast-check": "4.9.0",
-    "jsdom": "30.0.0",
+    "jsdom": "30.0.1",
     "markdownlint": "0.41.1",
     "markdownlint-cli2": "0.23.2",
-    "oxfmt": "0.61.0",
-    "oxlint": "1.76.0",
+    "oxfmt": "0.62.0",
+    "oxlint": "1.77.0",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
-    "vite": "8.1.5",
+    "vite": "8.2.1",
     "vite-plugin-solid": "2.11.14",
     "vitest": "4.1.10"
   }
