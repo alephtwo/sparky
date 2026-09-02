@@ -1,18 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap");
 @import "tailwindcss";
 
-@plugin "daisyui/index.js" {
-  themes: light --default;
-}
-
 @theme {
-  --font-zen: "Zen Old Mincho", sans-serif;
+  --font-serif: "Shippori Mincho", serif;
 }
-
-@variant dark (false);
 
 @layer base {
-  * {
-    @apply font-zen;
+  html {
+    @apply font-serif;
   }
 }

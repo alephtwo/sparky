@@ -104,8 +104,6 @@ test("input has all required classNames", () => {
     />
   ));
   const input = container.querySelector("input");
-  expect(input).toHaveClass("input");
-  expect(input).toHaveClass("w-full");
   expect(input).toHaveClass("font-bold");
 });
 

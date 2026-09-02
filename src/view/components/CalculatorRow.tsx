@@ -30,12 +30,12 @@ export const CalculatorRow: Component<CalculatorRowProps> = (props) => {
           autocomplete="off"
           inputmode="decimal"
           placeholder=" "
-          class="input peer h-full w-full px-4 pt-2 pb-1 text-base font-bold"
+          class="peer size-full rounded-sm border bg-white/50 px-4 pt-2 pb-1 font-bold"
           value={props.value}
           onInput={handleInput}
           aria-label={props.label}
         />
-        <label class="text-base-content/40 peer-focus:text-base-content/60 peer-[:not(:placeholder-shown)]:text-base-content/60 pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-base font-bold transition-all duration-200 peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-xs peer-focus:font-semibold peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:font-semibold">
+        <label class="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 font-bold transition-all duration-200 peer-not-placeholder-shown:top-1 peer-not-placeholder-shown:translate-y-0 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:font-semibold peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-xs peer-focus:font-semibold">
           {props.label}
         </label>
       </div>

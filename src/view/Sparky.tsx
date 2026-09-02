@@ -53,7 +53,7 @@ export const Sparky: Component = () => {
   return (
     <div class="flex h-screen items-center bg-[url(/backdrop.webp)] bg-cover bg-no-repeat">
       <div class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
-      <div class="z-10 container mx-auto w-md">
+      <div class="z-10 mx-auto w-md">
         <div class="flex flex-col items-center gap-2 p-2">
           <Paper>
             <div class="flex flex-col gap-2">
@@ -90,20 +90,17 @@ export const Sparky: Component = () => {
           <Paper>
             <div class="flex flex-col items-center gap-2">
               <progress
-                class="progress progress-primary"
+                class="w-full rounded-lg border select-none"
                 value={Math.min(percent(), 100)}
                 max="100"
               ></progress>
-              <span class="text-base-content/70 text-sm">
+              <span class="text-sm">
                 {sparks()} / 300 ({percent()}%)
               </span>
               <span class="text-2xl font-bold">{formatCurrency(tenRollsToSpark() * 3150)}</span>
               <div class="flex items-center gap-2 text-sm">
-                <IconPhoneCall size={20} stroke="2" class="text-error" />
-                <a
-                  class="link link-primary"
-                  href="https://www.ncpgambling.org/help-treatment/national-helpline-1-800-522-4700/"
-                >
+                <IconPhoneCall size={20} stroke="2" />
+                <a href="https://www.ncpgambling.org/help-treatment/national-helpline-1-800-522-4700/">
                   National Problem Gambling Helpline
                 </a>
               </div>
