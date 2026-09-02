@@ -8,12 +8,6 @@
   "options": {
     "typeAware": true
   },
-  "globals": {
-    // Svelte
-    "$derived": "readonly",
-    "$props": "readonly",
-    "$state": "readonly"
-  },
   "jsPlugins": ["oxlint-tailwindcss"],
   "settings": {
     "tailwindcss": {
