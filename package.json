@@ -29,31 +29,31 @@
     "paraglide:machine-translate": "inlang machine translate --project project.inlang"
   },
   "dependencies": {
-    "@tabler/icons-solidjs": "3.46.0",
-    "oxlint-tsgolint": "7.0.2001",
+    "@tabler/icons-solidjs": "3.48.0",
+    "oxlint-tsgolint": "7.0.2003",
     "solid-js": "1.9.15"
   },
   "devDependencies": {
-    "@inlang/cli": "3.3.5",
-    "@inlang/paraglide-js": "2.25.1",
+    "@inlang/cli": "3.3.8",
+    "@inlang/paraglide-js": "2.25.4",
     "@solidjs/testing-library": "0.8.10",
     "@stryker-mutator/api": "10.0.0",
     "@stryker-mutator/core": "10.0.0",
     "@stryker-mutator/vitest-runner": "10.0.0",
     "@tailwindcss/vite": "4.3.3",
     "@testing-library/jest-dom": "7.0.1",
-    "@types/node": "26.5.0",
-    "fast-check": "4.9.0",
-    "jsdom": "30.0.1",
+    "@types/node": "26.6.3",
+    "fast-check": "4.10.2",
+    "jsdom": "30.1.1",
     "markdownlint": "0.41.1",
-    "markdownlint-cli2": "0.23.2",
-    "oxfmt": "0.67.0",
-    "oxlint": "1.82.0",
-    "oxlint-tailwindcss": "1.11.0",
+    "markdownlint-cli2": "0.23.3",
+    "oxfmt": "0.71.0",
+    "oxlint": "1.86.0",
+    "oxlint-tailwindcss": "1.14.0",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
-    "vite": "8.2.2",
+    "vite": "8.3.1",
     "vite-plugin-solid": "2.11.14",
-    "vitest": "5.0.0"
+    "vitest": "5.0.3"
   }
 }
