@@ -29,13 +29,13 @@ spark.
 Pull in dependences:
 
 ```shell
-> npm install
+npm install
 ```
 
 Start a development server:
 
 ```shell
-> npm start
+npm start
 ```
 
 ## Contributing
