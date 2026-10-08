@@ -31,11 +31,11 @@
   "dependencies": {
     "@tabler/icons-solidjs": "3.49.0",
     "oxlint-tsgolint": "7.0.2003",
-    "solid-js": "1.9.15"
+    "solid-js": "1.9.17"
   },
   "devDependencies": {
-    "@inlang/cli": "3.3.8",
-    "@inlang/paraglide-js": "2.25.4",
+    "@inlang/cli": "3.3.9",
+    "@inlang/paraglide-js": "2.26.0",
     "@solidjs/testing-library": "0.8.10",
     "@stryker-mutator/api": "10.0.0",
     "@stryker-mutator/core": "10.0.0",
@@ -52,7 +52,7 @@
     "oxlint-tailwindcss": "1.14.0",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
-    "vite": "8.3.2",
+    "vite": "8.3.3",
     "vite-plugin-solid": "2.11.14",
     "vitest": "5.0.3"
   }
