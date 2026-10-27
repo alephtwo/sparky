@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@inlang/cli": "3.4.4",
-    "@inlang/paraglide-js": "2.29.1",
+    "@inlang/paraglide-js": "2.29.2",
     "@solidjs/testing-library": "0.8.10",
     "@stryker-mutator/api": "10.1.1",
     "@stryker-mutator/core": "10.1.1",
