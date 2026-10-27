@@ -1,19 +1,22 @@
 {
-  "include": ["src", "vite.config.mts", "vitest.setup.mts"],
+  "include": ["src", "vite.config.mts"],
   "compilerOptions": {
-    "lib": ["dom", "esnext"],
-    "types": ["vite/client", "@testing-library/jest-dom", "solid-js"],
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
+    "types": ["vite/client"],
+
+    // Module Resolution
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@i18n/messages": ["./src/paraglide/messages"],
+      "@/*": ["./src/*"]
+    },
 
     // Build
     "allowImportingTsExtensions": true,
-    "allowJs": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
     "noEmit": true,
-    "skipLibCheck": true,
-
-    // JSX
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "skipLibCheck": true
   }
 }

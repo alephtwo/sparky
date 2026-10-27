@@ -20,5 +20,7 @@ jobs:
           cache: "pnpm"
       - name: "Install Dependencies"
         run: "pnpm install --frozen-lockfile"
+      - name: "Generate Dependencies"
+        run: "pnpm generate"
       - name: "Run unit tests"
         run: "pnpm test"

@@ -1,4 +1,4 @@
-import { render } from "solid-js/web";
+import { createRoot } from "react-dom/client";
 
 import { Sparky } from "./view/Sparky";
 
@@ -8,4 +8,5 @@ if (mount === null) {
 }
 
 // Stryker disable next-line ArrowFunction: Too hard to test honestly
-render(() => <Sparky />, mount);
+const root = createRoot(mount);
+root.render(<Sparky />);

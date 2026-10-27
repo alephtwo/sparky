@@ -6,8 +6,8 @@ on:
       - "main"
   workflow_call:
 jobs:
-  oxlint:
-    name: "Run oxlint"
+  linter:
+    name: "Run JS Linter"
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@v6"
@@ -20,9 +20,9 @@ jobs:
           cache: "pnpm"
       - name: "Install Dependencies"
         run: "pnpm install --frozen-lockfile"
-      - name: "Compile paraglide"
-        run: "pnpm paraglide:compile"
-      - name: "Run oxlint"
+      - name: "Generate Dependencies"
+        run: "pnpm generate"
+      - name: "Run linter"
         run: "pnpm lint:ts"
   oxfmt:
     name: "Run oxfmt"
@@ -40,8 +40,8 @@ jobs:
         run: "pnpm install --frozen-lockfile"
       - name: "Run oxfmt"
         run: "pnpm oxfmt"
-  markdownlint:
-    name: "Run Markdownlint"
+  markdown:
+    name: "Run Markdown Linter"
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@v6"
@@ -54,7 +54,7 @@ jobs:
           cache: "pnpm"
       - name: "Install Dependencies"
         run: "pnpm install --frozen-lockfile"
-      - name: "Run markdownlint"
+      - name: "Run markdown linting"
         run: "pnpm lint:md"
   yaml:
     name: "Lint YAML"
