@@ -2,11 +2,11 @@ import TenPartTicketsIcon from "/10part.webp?url";
 import CrystalsIcon from "/crystal.webp?url";
 import SparksIcon from "/sparks.webp?url";
 import TicketsIcon from "/ticket.webp?url";
-import { IconPhoneCall } from "@tabler/icons-solidjs";
-import { Component, createEffect, createMemo, createSignal } from "solid-js";
+import { m } from "@i18n/messages";
+import { IconPhoneCall } from "@tabler/icons-react";
+import { useEffect, useMemo, useState } from "react";
 
 import type { UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
-import { m } from "../paraglide/messages";
 import { getLocale, Locale } from "../paraglide/runtime";
 import { calculate } from "../util/calculate.mts";
 import { formatCurrency } from "../util/currency.mts";
@@ -14,21 +14,20 @@ import { CalculatorRow } from "./components/CalculatorRow";
 import { LocalePicker } from "./components/LocalePicker";
 import { Paper } from "./components/Paper";
 
-export const Sparky: Component = () => {
-  const [locale, setLocale] = createSignal<Locale>(getLocale());
-  const [crystals, setCrystals] = createSignal<UserEnteredNumber>("");
-  const [tickets, setTickets] = createSignal<UserEnteredNumber>("");
-  const [tenPartTickets, setTenPartTickets] = createSignal<UserEnteredNumber>("");
-  const [ceruleanSparks, setCeruleanSparks] = createSignal<UserEnteredNumber>("");
+export function Sparky(): React.JSX.Element {
+  const [locale, setLocale] = useState<Locale>(getLocale());
+  const [crystals, setCrystals] = useState<UserEnteredNumber>("");
+  const [tickets, setTickets] = useState<UserEnteredNumber>("");
+  const [tenPartTickets, setTenPartTickets] = useState<UserEnteredNumber>("");
+  const [ceruleanSparks, setCeruleanSparks] = useState<UserEnteredNumber>("");
 
   // Re-evaluate translations when locale changes
-  createEffect(() => {
-    document.title = messages().pageTitle;
+  useEffect(() => {
+    document.title = messages.pageTitle;
   });
 
   // Create reactive message getters that track locale changes
-  const messages = createMemo(() => {
-    void locale();
+  const messages = useMemo(() => {
     return {
       crystals: m.crystals(),
       tickets: m.tickets(),
@@ -36,69 +35,71 @@ export const Sparky: Component = () => {
       sparks: m.sparks(),
       pageTitle: m["page-title"](),
     };
-  });
+  }, [locale]);
 
-  const sparks = createMemo((): number =>
-    calculate({
-      tickets: tickets(),
-      tenPartTickets: tenPartTickets(),
-      crystals: crystals(),
-      sparks: ceruleanSparks(),
-    }),
+  const sparks = useMemo(
+    () =>
+      calculate({
+        tickets: tickets,
+        tenPartTickets: tenPartTickets,
+        crystals: crystals,
+        sparks: ceruleanSparks,
+      }),
+    [tickets, tenPartTickets, crystals, ceruleanSparks],
   );
-  const percent = createMemo(() => Math.round(sparks() / 3));
-  const neededToSpark = createMemo(() => Math.max(300 - sparks(), 0));
-  const tenRollsToSpark = createMemo(() => Math.ceil(neededToSpark() / 10));
+  const percent = useMemo(() => Math.round(sparks / 3), [sparks]);
+  const neededToSpark = useMemo(() => Math.max(300 - sparks, 0), [sparks]);
+  const tenRollsToSpark = useMemo(() => Math.ceil(neededToSpark / 10), [neededToSpark]);
 
   return (
-    <div class="flex h-screen items-center bg-[url(/backdrop.webp)] bg-cover bg-no-repeat">
-      <div class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
-      <div class="z-10 mx-auto w-md">
-        <div class="flex flex-col items-center gap-2 p-2">
+    <div className="flex h-screen items-center bg-[url(/backdrop.webp)] bg-cover bg-no-repeat">
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+      <div className="z-10 mx-auto w-md">
+        <div className="flex flex-col items-center gap-2 p-2">
           <Paper>
-            <div class="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
               <CalculatorRow
                 icon={CrystalsIcon}
-                label={messages().crystals}
-                value={crystals()}
+                label={messages.crystals}
+                value={crystals}
                 onChange={setCrystals}
                 alt="Crystals"
               />
               <CalculatorRow
                 icon={TicketsIcon}
-                label={messages().tickets}
-                value={tickets()}
+                label={messages.tickets}
+                value={tickets}
                 onChange={setTickets}
                 alt="Tickets"
               />
               <CalculatorRow
                 icon={TenPartTicketsIcon}
-                label={messages().tenPartTickets}
-                value={tenPartTickets()}
+                label={messages.tenPartTickets}
+                value={tenPartTickets}
                 onChange={setTenPartTickets}
                 alt="Ten Part Tickets"
               />
               <CalculatorRow
                 icon={SparksIcon}
-                label={messages().sparks}
-                value={ceruleanSparks()}
+                label={messages.sparks}
+                value={ceruleanSparks}
                 onChange={setCeruleanSparks}
                 alt="Cerulean Sparks"
               />
             </div>
           </Paper>
           <Paper>
-            <div class="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center gap-2">
               <progress
-                class="w-full rounded-lg border select-none"
-                value={Math.min(percent(), 100)}
+                className="w-full rounded-lg border select-none"
+                value={Math.min(percent, 100)}
                 max="100"
               ></progress>
-              <span class="text-sm">
-                {sparks()} / 300 ({percent()}%)
+              <span className="text-sm">
+                {sparks} / 300 ({percent}%)
               </span>
-              <span class="text-2xl font-bold">{formatCurrency(tenRollsToSpark() * 3150)}</span>
-              <div class="flex items-center gap-2 text-sm">
+              <span className="text-2xl font-bold">{formatCurrency(tenRollsToSpark * 3150)}</span>
+              <div className="flex items-center gap-2 text-sm">
                 <IconPhoneCall size={20} stroke="2" />
                 <a href="https://www.ncpgambling.org/help-treatment/national-helpline-1-800-522-4700/">
                   National Problem Gambling Helpline
@@ -106,11 +107,11 @@ export const Sparky: Component = () => {
               </div>
             </div>
           </Paper>
-          <div class="self-end">
-            <LocalePicker locale={locale()} onChange={setLocale} />
+          <div className="self-end">
+            <LocalePicker locale={locale} onChange={setLocale} />
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
