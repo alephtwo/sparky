@@ -12,11 +12,12 @@ const paths = {
 export default defineConfig({
   base: "/sparky",
   plugins: [
-    react({}),
+    react(),
     tailwindcss(),
     paraglide({
-      project: "./project.inlang",
-      outdir: "./src/paraglide",
+      project: path.join(import.meta.dirname, "project.inlang"),
+      outdir: path.join(paths.src, "paraglide"),
+      emitTsDeclarations: true,
     }),
   ],
   resolve: {
